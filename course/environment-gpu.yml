@@ -1,0 +1,14 @@
+# Module 3's optional inference step only (RUN_INFERENCE = True): one GPU with at least 48 GB.
+# Layer it on environment.yml on the GPU machine; never needed on a laptop.
+name: ncar-ml-readiness
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - pip
+  - pip:
+      - torch==2.14.1
+      - microsoft-aurora==2.0.1
+      - gcsfs==2026.10.1
+      - huggingface_hub==2.2.0
+      - cdsapi==0.7.7

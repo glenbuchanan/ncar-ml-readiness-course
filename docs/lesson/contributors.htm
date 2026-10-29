@@ -1,0 +1,157 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Machine Learning Readiness for NSF NCAR Staff — Module 1: Foundations</title>
+    <meta name="author" content="Glen Buchanan">
+    <meta name="dcterms.rightsHolder" content="Glen Buchanan">
+    <meta name="dcterms.license" content="https://creativecommons.org/licenses/by/4.0/">
+    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="jquery/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/meted-base.min.css">
+    <script src="jquery/jquery.min.js"></script>
+    <script src="jquery/jquery-ui.min.js"></script>
+    <script src="jquery/jquery-plugins.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="modernizr/modernizr.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="jquery/meted-player/mediaelementplayer.min.css">
+    <script src="jquery/meted-player/mediaelement-and-player.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="jquery/apps/fancybox/fancybox.min.css">
+    <script src="jquery/apps/fancybox/fancybox.min.js"></script>
+    <script src="jquery/apps/elevatezoom/elevatezoom.min.js"></script>
+    <script src="jquery/apps/drag/drag.js"></script>
+    <script src="jquery/apps/draw/draw.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="jquery/apps/image-sweep/image-sweep.css">
+    <script src="jquery/apps/image-sweep/image-sweep.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/module-absorb.css">
+    <link rel="stylesheet" type="text/css" media="print" href="css/module-print.css">
+    <script type="text/javascript" src="jquery/defaults.js"></script>
+    <script type="text/javascript" src="jquery/module-custom.js"></script>
+
+    <style>
+    #page_contributors h2{font-size:18px;margin-top:10px;margin-bottom:10px}</style>
+    <script type="text/javascript">
+    var printVersion = false; // Specify Print View.  [true] for PRINT, or [false] for DYNAMIC content.
+    </script>
+
+
+
+</head>
+<body>
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid" style="max-width: 1200px;">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.htm">Home</a></li>
+                    <li><a href="lesson.htm">Lesson</a></li>
+                    <li><a href="media_gallery.htm">Gallery</a></li>
+                    <li class="active"><a href="contributors.htm">Contributors</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <main id="master-container" class="container-fluid" style="max-width: 1200px;">
+        <div class="row">
+
+            <section id="lesson-content" class="col-sm-9">
+                <div id="page_contributors" class="page">
+                    <h1 class="sub_head">Contributors</h1>
+
+                    <h2>Author</h2>
+                    <ul>
+                        <li>Glen Buchanan — independent; self-funded.</li> 
+                    </ul>
+
+                    <h2>Scientific advisors / reviewers</h2>
+                    <ul>
+                        <li>None yet. This lesson has not been reviewed by NSF NCAR, UCAR, COMET or NSF Unidata, and nothing in it should be read as their view.</li>
+                    </ul>
+
+                    <h2>Instructional design, graphics and authoring</h2>
+                    <ul>
+                        <li>Glen Buchanan, with an AI drafting engine — Anthropic's Claude, run through an automated drafting and checking process — that drafted every paragraph and every knowledge check from licence-checked sources, credited where they are used. Every quotation is checked by script, word for word, against its source; paraphrase is not machine-checked. Drafted with AI assistance (Anthropic's Claude) from cited sources, under the author's direction; the author's line-by-line edit and a subject-matter review are still to come.</li>
+                    </ul>
+
+                    <h2>Funding</h2>
+                    <p>Self-funded. No NSF NCAR sponsorship, funding or review. Learner performance on the pretest and quiz is reported only from simulated cohorts and labelled as such.</p>
+
+                    <h2>Template</h2>
+                    <p>The page structure, stylesheets, scripts and question-snippet markup are the <em>latest_core</em> (absorb-2025) template of UCAR/COMET's InternalTools_generator-metedlesson v3.0.1:</p>
+                    <blockquote>
+                        <p>Copyright 2025 UCAR/COMET – Gary Pacheco (https://www.comet.ucar.edu)<br>
+                        Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
+                    </blockquote>
+                    <p>That licence covers the template code only. It grants no rights in UCAR's or COMET's names or marks, and the template's use here implies no UCAR, COMET or NSF NCAR authorship, sponsorship, association or endorsement. The footer line the generator prints into every page — a UCAR copyright notice reserving all rights, dated to the year the generator ran — is template output, not a statement about this content, and it is not published over this lesson; every authored page replaces it with the author's notice below.</p>
+
+                    <h2>Template libraries</h2>
+                    <p>The template bundles jQuery and jQuery UI (&copy; OpenJS Foundation, MIT), Bootstrap 3 with Glyphicons Halflings (MIT; Glyphicons' grant for use with Bootstrap), MediaElement.js (&copy; John Dyer, MIT) and fancyBox v2.1.5 (&copy; fancyApps, Janis Skarnelis &mdash; <a href="https://creativecommons.org/licenses/by-nc/3.0/" target="_blank" style="text-decoration:underline">CC BY-NC 3.0</a>, non-commercial use only: this lesson is free and non-commercial, and that licence covers the lightbox code and its images, not the lesson's content). The template's Futura Pro webfont files, shipped without a licence, were removed from this build on 2026-10-20; no lesson page loaded them. The full list of bundled libraries and their licences is in the repository&#39;s <a href="https://github.com/glenbuchanan/ncar-ml-readiness-course/blob/main/NOTICE.md" target="_blank" style="text-decoration:underline">NOTICE.md</a>.</p>
+
+                    <h2>Content licence</h2>
+                    
+                    <p>The lesson's text and its sixteen diagrams are &copy; 2026 Glen Buchanan and are licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">Creative Commons Attribution 4.0 International</a>. The cover and the top banner are crops of NASA's <em>Blue Marble: Next Generation</em> (NASA Earth Observatory; Reto St&ouml;ckli, NASA GSFC), a public-domain US-government work; only the lesson's crop, darkening and credit line are CC BY 4.0, and the credit burned into the cover is the one on the splash page. Twelve third-party images on the lesson pages are under their own terms and are not part of the CC BY grant: NASA Scientific Visualization Studio, NASA Earth Observatory and NOAA/NWS images are public domain; the figures from Rodgers et al. (2021) and Charlton-Perez et al. (2024) are CC BY 4.0 with the changes noted on each; three images courtesy of UCAR (the Cheyenne precipitation simulation, the Derecho cabinet and the CREDIT dashboard) are for non-commercial, educational use under <a href="https://www.ucar.edu/terms-of-use/media" target="_blank" style="text-decoration:underline">UCAR's media terms</a>. Every item's credit and licence is on the Media page. Attribute as "Glen Buchanan, <em>Machine Learning Readiness for NSF NCAR Staff — Module 1: Foundations</em> (2026), CC BY 4.0".</p>
+
+                    <h2>Sources quoted, and their licences</h2>
+                    <ul>
+                        <li>Google Machine Learning Crash Course, "What is Machine Learning?" and "Supervised Learning" — content CC BY 4.0.</li>
+                        <li>NSF Unidata, <em>Supervised Machine Learning Readiness</em>, README and notebooks (NSF award #2319979) — Apache-2.0. Its public catalogue page (© 2026 UCAR) is cited under the UCAR website Terms of Use, with two brief excerpts; not reproduced.</li>
+                        <li>MetPy, <code>metpy.calc</code> reference — © 2008–2025 MetPy Developers, BSD-3-Clause.</li>
+                        <li>scikit-learn User Guide, "Common pitfalls and recommended practices" and "Cross-validation" — © 2007–2026 The scikit-learn developers, BSD-3-Clause.</li>
+                        <li>Rodgers et al. (2021), Earth Syst. Dynam. 12, 1393–1411, https://doi.org/10.5194/esd-12-1393-2021 — CC BY 4.0.</li>
+                        <li>Mamalakis, Barnes &amp; Ebert-Uphoff (2022), arXiv:2208.09473v1 — CC BY 4.0 (the AIES version is cited, not quoted).</li>
+                        <li>Lam et al. (2023), arXiv:2212.12794v2 — CC BY 4.0.</li>
+                        <li>Schreck et al. (2024), arXiv:2411.07814 — CC BY 4.0 (the npj version is cited, not quoted).</li>
+                        <li>Bonavita (2023), arXiv:2309.08473 — CC BY 4.0.</li>
+                        <li>Charlton-Perez et al. (2023), arXiv:2312.02658 — CC BY 4.0.</li>
+                        <li>Rasp et al. (2023), arXiv:2308.15560 — CC BY 4.0; the WeatherBench 2 model table was read on 2026-10-19.</li>
+                        <li>Ben Bouallègue et al. (2023), arXiv:2307.10128v2 — CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/); quoted unaltered.</li>
+                        <li>NSF NCAR HPC Documentation, "Derecho" — © 2023–2026 UCAR, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/); two sentences of the overview and three short excerpts (the hardware table's "328 total A100 GPUs" and "40GB HBM2 memory per GPU", and "simulations and AI/ML jobs") quoted unaltered; read 2026-10-19.</li>
+                        <li>NSF NCAR HPC Documentation, "Casper" — © 2023–2026 UCAR, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/); two GPU names from the hardware table ("NVIDIA Ampere A100 80GB", "NVIDIA Hopper H100 80GB") quoted unaltered; read 2026-10-20.</li>
+                        <li>NCAR/InferStudio README — © NSF NCAR/UCAR, no licence published; one brief excerpt ("NSF NCAR's web application for running AI weather model inference and visualizing the results"), cited; read 2026-10-20.</li>
+                        <li>NCAR/miles-credit README — Apache-2.0. NVIDIA, FourCastNet 3 model card — Apache-2.0. Registry of Open Data on AWS, CESM2 LENS entry (awslabs/open-data-registry) — Apache-2.0; the data terms are the UCAR Data Terms of Use (CC BY 4.0).</li>
+                        <li>NSF NCAR AI Program pages (ncarprojects.ucar.edu/ai and sub-pages, including "Community Support"; © 2026 UCAR), the CESM2 Large Ensemble Community Project page (© 2026 UCAR; facts located, not quoted) and the NSF NCAR EdEC bootcamp curriculum slides (© UCAR) — cited, with brief excerpts, under the UCAR website Terms of Use; not reproduced. Dills et al. (2019), ISPRS IJGI 8(7):311 — CC BY 4.0.</li>
+                    </ul>
+                    <p>The media register (course/media-register.csv, with media-register.xlsx beside it) carries one row per media item with its dimensions, where it is used, its credit and its licence.</p>
+
+                    <p id="contributors-date" class="small">Contributors, sources and licences as listed in October 2026. First published October 2026.</p>
+                </div>
+
+            </section>
+        </div>
+
+        
+        <footer id="lesson-footer" class="row">
+            <div class="col-md-8">
+
+                <p id="lesson-copyright">&copy; 2026 Glen Buchanan · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">CC BY 4.0</a> (third-party images keep their own terms) · Not endorsed by NSF NCAR · <a href="media_gallery.htm" style="text-decoration:underline">Credits and licences</a> · <a href="https://github.com/glenbuchanan/ncar-ml-readiness-course" target="_blank" style="text-decoration:underline">Source on GitHub</a></p>
+
+            </div>
+            <div class="col-md-4">
+
+                <ul id="parent-links"><li><a href="contributors.htm">Contributors</a></li></ul>
+
+            </div>
+        </footer>
+    </main>
+
+    
+    <div id="quiz-prompt"></div>
+<script src="../scorm/bridge.js"></script>
+</body>
+</html>

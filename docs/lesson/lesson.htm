@@ -1,0 +1,953 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Machine Learning Readiness for NSF NCAR Staff — Module 1: Foundations</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="jquery/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/meted-base.min.css">
+    <script src="jquery/jquery.min.js"></script>
+    <script src="jquery/jquery-ui.min.js"></script>
+    <script src="jquery/jquery-plugins.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="modernizr/modernizr.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="jquery/meted-player/mediaelementplayer.min.css">
+    <script src="jquery/meted-player/mediaelement-and-player.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="jquery/apps/fancybox/fancybox.min.css">
+    <script src="jquery/apps/fancybox/fancybox.min.js"></script>
+    <script src="jquery/apps/elevatezoom/elevatezoom.min.js"></script>
+    <script src="jquery/apps/drag/drag.js"></script>
+    <script src="jquery/apps/draw/draw.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="jquery/apps/image-sweep/image-sweep.css">
+    <script src="jquery/apps/image-sweep/image-sweep.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/module-absorb.css">
+    <link rel="stylesheet" type="text/css" media="print" href="css/module-print.css">
+    <script type="text/javascript" src="jquery/defaults.js"></script>
+    <script type="text/javascript" src="jquery/module-custom.js"></script>
+
+    <script type="text/javascript">
+    var printVersion = false; // Specify Print View.  [true] for PRINT, or [false] for DYNAMIC content.
+    </script>
+
+
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid" style="max-width: 1200px;">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+        
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.htm">Home</a></li>
+                <li class="active"><a href="lesson.htm">Lesson</a></li>
+                <li><a href="media_gallery.htm">Gallery</a></li>
+                <li><a href="contributors.htm">Contributors</a></li>
+            </ul>
+        
+        </div>
+    </div>
+</nav>
+
+<main id="master-container" class="container-fluid" style="max-width: 1200px;">
+    <div class="row">
+        <div id="lesson-sidebar" class="col-sm-3">
+        <h2 id="lesson-sidebar-title">Machine Learning Readiness for NSF NCAR Staff — Module 1: Foundations</h2>
+        <hr>
+        
+        <nav id="menu" class="sidebar-toc">
+            
+            <div class="btn-group">
+            
+            </div>
+            
+            
+            
+            
+
+            <br>
+            <ul class="nav lc-docs-sidenav">
+                    <li><a href="#page_1-0-0">Welcome: what this lesson is, and who it is for</a></li>
+                    <li><a href="#page_2-0-0">What machine learning is, by its goals</a>
+                        <ul class="nav" id="ul_2-0-0">
+                            <li><a href="#page_2-1-0">Four kinds of goal</a></li>
+                            <li><a href="#page_2-2-0">The closed-form rule: when it is not an ML problem</a></li>
+                            <li><a href="#page_2-3-0">Three framing questions</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#page_3-0-0">The analysis spine</a>
+                        <ul class="nav" id="ul_3-0-0">
+                            <li><a href="#page_3-1-0">Eight steps, one failure each</a></li>
+                            <li><a href="#page_3-2-0">The leakage lesson: splitting a large ensemble</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#page_4-0-0">ML at NSF NCAR today</a>
+                        <ul class="nav" id="ul_4-0-0">
+                            <li><a href="#page_4-1-0">The AI Program's six focus areas</a></li>
+                            <li><a href="#page_4-2-0">CREDIT, Derecho's GPUs, and CESM2 LENS</a></li>
+                            <li><a href="#page_4-3-0">What staff are taught today</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#page_5-0-0">What an AI weather model does differently</a>
+                        <ul class="nav" id="ul_5-0-0">
+                            <li><a href="#page_5-1-0">Solving the equations vs applying a learned mapping</a></li>
+                            <li><a href="#page_5-2-0">Where the speed and the limits come from</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#page_6-0-0">Summary and what comes next</a></li>
+                    <li><a href="#page_contributors">Contributors</a></li>
+                </ul>
+            <hr>
+            
+        </nav>
+        </div>
+
+            <section id="lesson-content" class="col-sm-9">
+                <div id="print-button">
+                    <a href="print.htm"><span class="glyphicon glyphicon-print"></span> Print</a>
+                </div>
+                <div class="lesson-page" id="page_1-0-0" style="display:none">
+                    <h3 class="sub_head">Welcome: what this lesson is, and who it is for</h3>
+
+                    
+                    <p>This lesson is for NSF NCAR scientists, engineers and software staff who are new to machine learning, or who use it without having been trained in it — the staff counterpart of the "New and aspiring machine learning users" NSF Unidata's series is written for. Where that series says "No programming experience is required", this course asks for Python at the level of the ESDS Xarray tutorial from Module 2 on, and no machine learning at all. Nothing in this module asks you to write code; the two notebook modules that follow it do.</p>
+
+                    
+                    <p>It takes about one hour. It is the first of three modules, and it is built as a sibling of NSF Unidata's <em>Supervised Machine Learning Readiness</em> series: the same shape (a no-code lesson with stated objectives, then notebooks with a handbook and a rubric), on NSF NCAR-distributed data, with two things that series leaves off — neural networks with explainability, and AI weather models.</p>
+
+                     
+                    <figure>
+                        <img aria-describedby="cap-01" class="img-responsive center-block" style="width:100%;height:auto" src="media/sourced/svs5669-aerosols-2025-08-19.jpg" width="1200" height="675" alt="GEOS model map, 19 August 2025: sea-salt aerosol around Hurricane Erin, Saharan dust over the Atlantic, wildfire smoke over North America and Africa.">
+                        <figcaption class="small" id="cap-01">What an Earth-system model computes: aerosols in NASA's GEOS model on 19 August 2025 — Hurricane Erin, Saharan dust and wildfire smoke. NASA's Scientific Visualization Studio; NASA GMAO; visualizations by Joseph V. Ardizzone and Helen-Nicole Kostis. Public domain.</figcaption>
+                    </figure>
+
+                    
+                    <h4>After this module you will be able to</h4>
+                    
+                    <ul>
+                        <li><strong>O1.</strong> Distinguish problems in Earth system science that are and are not appropriate for supervised machine learning, given a description of the data and the decision.</li>
+                        <li><strong>O2.</strong> Explain the steps of a supervised analysis — frame, data, split, train, validate, refine, test, justify — and name the failure each step guards against.</li>
+                        <li><strong>O5.</strong> Describe what an AI weather model does differently from a numerical model, and state two conditions under which its output should not be trusted.</li>
+                    </ul>
+                    
+                    <p>Objectives O3 and O4 belong to Modules 2 and 3, where you build and validate a classifier and then a small neural network on the CESM2 Large Ensemble. The numbering is kept so the pretest and quiz items line up with the course as a whole: in COMET's practice the pre- and post-course assessments are "aligned to measurable learning objectives associated with each lesson" (Dills et al. 2019).</p>
+
+                     
+                    <figure>
+                        <img aria-describedby="cap-02" class="img-responsive center-block" style="width:100%;height:auto" src="media/graphics/course-map.png" width="1200" height="480" alt="Course map as three cards: Module 1 Foundations in gold, Module 2 Applications, Module 3 Analysis; pretest before, quiz after. The card text follows.">
+                        <figcaption class="small" id="cap-02">The course map: three modules, five objectives, pretest and quiz; gold on Module 1. © 2026 Glen Buchanan, CC BY 4.0.</figcaption>
+                    </figure>
+                     
+                    <ul>
+                        <li><strong>Module 1 · Foundations</strong> — no code, about one hour: O1 appropriate problems; O2 the spine and its failures; O5 AI weather models, two conditions.</li>
+                        <li><strong>Module 2 · Applications</strong> — notebook, handbook, rubric: O3 build and validate a classifier on CESM2 LENS (split by member, precision and recall, paired trials).</li>
+                        <li><strong>Module 3 · Analysis</strong> — notebook, one GPU step: O4 a small neural network with one attribution per prediction; one AI weather model run in inference.</li>
+                        <li>Pretest before Module 1; quiz after Module 3, the pretest's twin, item for item.</li>
+                    </ul>
+
+                    <h4>How to read this lesson</h4>
+                     
+                    <p>Each page carries plain text first and its sources in small print at the end. Along the way you will meet eight short knowledge checks. They are not scored; in the LMS version your answers are recorded but do not count toward any grade. Press <strong>Done</strong> and the feedback tells you something the page has not yet said. Try the first one now, before you have read anything — it is meant to show you where you already stand.</p>
+
+                    
+                    <div class="panel panel-default interaction-question">
+                        <div class="panel-body">
+                            <div class="question-wrap radio">
+                                <h4>Question 1</h4>
+                                <p id="q01-text">A group at a forecast office proposes to "use machine learning" to get the <em>amount</em> of winter precipitation at a Front Range station from the state of ENSO the previous autumn. In the terms this lesson uses, what kind of goal is that? (choose the best answer)</p>
+                                <form action="#">
+                                    <fieldset aria-labelledby="q01-text">
+                                        <div class="response-group-item"><input id="q01a" name="q01" value="a" type="radio"><label for="q01a"> <strong>a) </strong>Finding groupings in the data</label></div>
+                                        <div class="response-group-item correct"><input id="q01b" name="q01" value="b" type="radio"><label for="q01b"> <strong>b) </strong>Predicting a number</label></div>
+                                        <div class="response-group-item"><input id="q01c" name="q01" value="c" type="radio"><label for="q01c"> <strong>c) </strong>Predicting a category</label></div>
+                                        <div class="response-group-item"><input id="q01d" name="q01" value="d" type="radio"><label for="q01d"> <strong>d) </strong>Producing new content</label></div>
+                                        <input class="submit-button btn btn-primary" name="submit-button" value="Done" type="button">
+                                    </fieldset>
+                                </form>
+                                <div class="answer">
+                                    <p class="response">The correct answer is b.</p>
+                                    <p class="explanation">An amount in millimetres is a number, so the goal is regression. Had the group asked <em>will the winter be wet or not?</em>, the goal would be a category — classification — and that is the form Module 2 actually uses, because a yes/no decision is what a water manager acts on. The goal you choose decides the model type, the metric you report and the way you can be wrong, which is why the next page sorts machine learning by its goals before anything else.</p>
+                                </div>
+                                <div class="message" role="alert">Please make a selection.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    
+                    <p class="small">Funding and standing: this lesson is self-funded and independent. It was not produced, sponsored, reviewed or endorsed by NSF NCAR, UCAR or the COMET Program; it names them because they are its subject. Sources on this page: NSF Unidata, <em>Supervised Machine Learning Readiness</em> catalogue page (© 2026 UCAR, cited); Dills et al. (2019), CC BY 4.0. Figures: aerosols map NASA's Scientific Visualization Studio, public domain; course map © 2026 Glen Buchanan, CC BY 4.0.</p>
+                
+<div class="stage_nav"><ul class="pager"><li class="previous invisible"></li> <li class="next"><a href="#page_2-0-0">Next &rarr;</a></li></ul></div>
+</div>
+<div class="lesson-page" id="page_2-0-0" style="display:none">
+                    <h3 class="sub_head">What machine learning is, by its goals</h3>
+
+                    
+                    <p>Definitions that start from the mathematics tend to lose the reader before the first decision. This lesson starts from what the model is <em>for</em>. Google's Machine Learning Crash Course (CC BY 4.0) puts it plainly. "ML is the process of training a piece of software, called a model, to make useful predictions or generate content … from data". A model, in the same words, is "a mathematical relationship derived from data that an ML system uses to make predictions".</p>
+
+                    
+                    <p>Hold on to two phrases in that definition. <em>Derived from data</em>: nobody writes the relationship down. The training procedure finds it in the examples it is given. <em>Useful predictions</em>: the relationship is judged by what it predicts on cases it has not seen. Whether it is physically right is a separate question, taken up in Section 5. Everything in this module follows from those two facts, including the ways a model can quietly fail.</p>
+
+                     
+                    <figure>
+                        <img aria-describedby="cap-03" class="img-responsive center-block" style="width:100%;height:auto" src="media/graphics/ml-derived-from-data.png" width="1200" height="560" alt="Flow diagram: training examples with answers lead to the model, a fitted curve, then applied to unseen cases and its predictions scored.">
+                        <figcaption class="small" id="cap-03">The two phrases in the Crash Course definition as one flow: training examples → the relationship (the model) → predictions scored on unseen cases; the gold path is the judgement by prediction. © 2026 Glen Buchanan, CC BY 4.0.</figcaption>
+                    </figure>
+
+                    
+                    <p>The same source gives a weather example. Keep it in mind for the whole course. The traditional way to predict rain is to build "a physics-based representation of the Earth's atmosphere and surface, computing massive amounts of fluid dynamics equations". The machine-learning way is to feed a model "enormous amounts of weather data until the ML model eventually learned the mathematical relationship between weather patterns that produce differing amounts of rain". The first is numerical weather prediction. The second is what an AI weather model does. That is the subject of the last section of this module.</p>
+
+                    
+                    <p class="small">Source on this page: Google Machine Learning Crash Course, "What is Machine Learning?", content CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Figure: © 2026 Glen Buchanan, CC BY 4.0.</p>
+                
+<div class="stage_nav"><ul class="pager"><li class="previous"><a href="#page_1-0-0">&larr; Previous</a></li> <li class="next"><a href="#page_2-1-0">Next &rarr;</a></li></ul></div>
+</div>
+<div class="lesson-page" id="page_2-1-0" style="display:none">
+                    <h3 class="sub_head">Four kinds of goal</h3>
+
+                    
+                    <p>Machine-learning systems fall into families according to what they are trained to produce. The Crash Course sorts systems into four kinds: supervised, unsupervised, reinforcement and generative. This lesson splits supervised into its two goals. It leaves reinforcement learning aside; the course does not use it. The figure sorts the four that remain. The paragraphs below give each one an Earth-system example.</p>
+
+                    
+                    <figure>
+                        <img aria-describedby="cap-04" class="img-responsive center-block" style="width:100%;height:auto" src="media/graphics/ml-by-goals.png" width="1200" height="600" alt="Four cards sorted by goal: regression, classification, clustering, generative; the first two marked supervised, the last two not supervised.">
+                        <figcaption class="small" id="cap-04">Machine learning sorted by what the model is for. © 2026 Glen Buchanan, CC BY 4.0.</figcaption>
+                    </figure>
+
+                    
+                    <p><strong>Predict a number (regression).</strong> "A regression model predicts a numeric value." The Crash Course's example is "a weather model that predicts the amount of rain, in inches or millimeters". Seasonal precipitation totals, a temperature at a site, a flux: all numbers.</p>
+
+                     
+                    <figure>
+                        <img aria-describedby="cap-05" class="img-responsive center-block" style="width:100%;height:auto" src="media/sourced/svs5603-gistemp-2025.jpg" width="1200" height="708" alt="World map of the 2025 GISTEMP v4 temperature anomaly: oranges and browns over nearly all land and ocean, darkest in the Arctic; colour bar in °F/°C.">
+                        <figcaption class="small" id="cap-05">What a regression target looks like: the GISTEMP v4 surface temperature anomaly for 2025 is a number on every grid cell. NASA's Scientific Visualization Studio; data provided by Robert B. Schmunk (NASA/GSFC GISS); visualizer Mark SubbaRao. Public domain.</figcaption>
+                    </figure>
+
+                    
+                    <p><strong>Predict a category (classification).</strong> "Classification models predict the likelihood that something belongs to a category." Two categories — rain or no rain, wet winter or not — make it binary classification. More than two, such as "rain, hail, snow, or sleet", make it multiclass. Module 2 builds a binary classifier.</p>
+
+                    
+                    <p><strong>Find groupings (clustering).</strong> Here the data carry no answers. "An unsupervised model might cluster a weather dataset based on temperature, revealing segmentations that define the seasons." The categories are discovered, not given. That is exactly what makes them hard to act on.</p>
+
+                    
+                    <p><strong>Produce new content (generative).</strong> "Generative models learn patterns in data with the goal to produce new but similar data." Useful, but outside this course. Nothing in Modules 2 and 3 generates anything.</p>
+
+                    
+                    <p>The first two families are <strong>supervised</strong>. The source's image is the right one. A supervised model is "like a student learning new material by studying old exams that contain both questions and answers." Note the last word. Your data must carry the answers — a label for every example. Suppose your archive holds inputs but no reliable record of what actually happened. Then you do not yet have a supervised problem, whatever the inputs look like.</p>
+
+                    
+                    <p class="small">Source on this page: Google Machine Learning Crash Course, "What is Machine Learning?" and "Supervised Learning", content CC BY 4.0. Figures: four kinds of goal © 2026 Glen Buchanan, CC BY 4.0; GISTEMP 2025 map NASA's Scientific Visualization Studio, public domain.</p>
+                
+<div class="stage_nav"><ul class="pager"><li class="previous"><a href="#page_2-0-0">&larr; Previous</a></li> <li class="next"><a href="#page_2-2-0">Next &rarr;</a></li></ul></div>
+</div>
+<div class="lesson-page" id="page_2-2-0" style="display:none">
+                    <h3 class="sub_head">The closed-form rule: when it is not an ML problem</h3>
+
+                    
+                    <p>Unidata's readiness notebooks open every analysis with one framing question. This lesson puts it first: <em>"Does a simpler solution exist?"</em> Their worked answer is for rain versus snow. The type of precipitation "relies on many different co-varying variables … A simple conditional statement may not be the most effective tool". That is a judgement. This page gives you the sharp case where no judgement is needed.</p>
+
+                    
+                    <p><strong>The closed-form rule.</strong> Suppose a known physical relation already gives the target <em>exactly</em> from the inputs you have. Then there is no machine-learning problem. Two examples come from everyday meteorology. Potential temperature follows from pressure and temperature: Θ = T (P₀ / P)<sup>κ</sup>. Relative humidity follows from pressure, temperature and specific humidity, through the WMO mixing-ratio relation. MetPy computes each one in a single call: <em>potential_temperature(pressure, temperature)</em> and <em>relative_humidity_from_specific_humidity(pressure, temperature, specific_humidity)</em>.</p>
+
+                     
+                    <figure>
+                        <img aria-describedby="cap-06" class="img-responsive center-block" style="width:100%;height:auto" src="media/sourced/nws-radiosonde-dual-release.jpg" width="1200" height="900" alt="Two NWS technicians on a grassy field release radiosondes: one balloon in frame above its technician, the other already risen out of frame; blue sky.">
+                        <figcaption class="small" id="cap-06">Where P and T come from: a radiosonde dual release at the NWS Sterling Field Support Center. From pressure and temperature, potential temperature follows exactly — no model needed. NOAA/National Weather Service. Public domain.</figcaption>
+                    </figure>
+
+                    
+                    <p>Train a model to predict potential temperature from pressure and temperature. At best it rediscovers the formula, approximately. At worst it adds error to something you could have computed exactly. The data would <em>carry the answers</em>. The model would train. The validation score would look superb. And the whole exercise would be a slower, noisier way of calling a library function. Nothing in the training procedure warns you. Only the framing question does.</p>
+
+                    
+                    <figure>
+                        <img aria-describedby="cap-07" class="img-responsive center-block" style="width:100%;height:auto" src="media/graphics/closed-form-rule.png" width="1200" height="600" alt="Two columns: a known relation gives the target exactly, so compute it; no closed form and many noisy inputs, so a candidate for supervised ML.">
+                        <figcaption class="small" id="cap-07">The closed-form rule as the sharp case of "does a simpler solution exist?". Left column: potential temperature from pressure and temperature; relative humidity from pressure, temperature and specific humidity. Right column: rain or snow during a winter event; a wet Front Range winter from the autumn ENSO state. © 2026 Glen Buchanan, CC BY 4.0.</figcaption>
+                    </figure>
+
+                    
+                    <p>The right-hand column is where machine learning earns its keep. No formula gives the target. Many inputs drive it, they co-vary, and they are measured with noise. Whether a wet Front Range winter follows from the autumn ENSO state is such a target. It is the one Module 2 frames.</p>
+
+                    
+                    <div class="panel panel-default interaction-question">
+                        <div class="panel-body">
+                            <div class="question-wrap radio">
+                                <h4>Question 2</h4>
+                                <p id="q02-text">Which of these targets is <em>not</em> a candidate for supervised machine learning? (choose the best answer)</p>
+                                <form action="#">
+                                    <fieldset aria-labelledby="q02-text">
+                                        <div class="response-group-item"><input id="q02a" name="q02" value="a" type="radio"><label for="q02a"> <strong>a) </strong>Rain or snow during a winter event, from reanalysis temperature, humidity and wind at several levels</label></div>
+                                        <div class="response-group-item correct"><input id="q02b" name="q02" value="b" type="radio"><label for="q02b"> <strong>b) </strong>Potential temperature at a station, from its pressure and temperature</label></div>
+                                        <div class="response-group-item"><input id="q02c" name="q02" value="c" type="radio"><label for="q02c"> <strong>c) </strong>Whether a Front Range winter will be wet, from the autumn ENSO state</label></div>
+                                        <div class="response-group-item"><input id="q02d" name="q02" value="d" type="radio"><label for="q02d"> <strong>d) </strong>Tomorrow's maximum temperature at a station, from today's reanalysis fields</label></div>
+                                        <input class="submit-button btn btn-primary" name="submit-button" value="Done" type="button">
+                                    </fieldset>
+                                </form>
+                                <div class="answer">
+                                    <p class="response">The correct answer is b.</p>
+                                    <p class="explanation">Potential temperature is given exactly by Θ = T (P₀ / P)<sup>κ</sup>; a model could only approximate what one line of MetPy computes. The other three have no closed form: each depends on many noisy, co-varying inputs, and no formula turns today's fields into tomorrow's station maximum. Notice what the rule does <em>not</em> say: it does not say the other three are good problems — only that they survive the first question. The next page asks the two that remain.</p>
+                                </div>
+                                <div class="message" role="alert">Please make a selection.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="show-after">
+                        <p><strong>Revealed after you answer:</strong> the relative-humidity relation MetPy documents, for the record. With w the mixing ratio, w<sub>s</sub> the saturation mixing ratio and ε the ratio of the molecular weights of vapour and dry air, RH = (w / (ε + w)) · ((ε + w<sub>s</sub>) / w<sub>s</sub>). Every term is a function of pressure, temperature and specific humidity — there is nothing left for a model to learn.</p>
+                    </div>
+
+                    
+                    <p class="small">Sources on this page: NSF Unidata, <em>Supervised Machine Learning Readiness</em> notebooks (Apache-2.0; NSF award #2319979); MetPy, <em>metpy.calc</em> reference, © 2008–2025 MetPy Developers, BSD-3-Clause. Figures: radiosonde release NOAA/National Weather Service, public domain; closed-form rule © 2026 Glen Buchanan, CC BY 4.0.</p>
+                
+<div class="stage_nav"><ul class="pager"><li class="previous"><a href="#page_2-1-0">&larr; Previous</a></li> <li class="next"><a href="#page_2-3-0">Next &rarr;</a></li></ul></div>
+</div>
+<div class="lesson-page" id="page_2-3-0" style="display:none">
+                    <h3 class="sub_head">Three framing questions</h3>
+
+                    
+                    <p>Unidata frames every supervised analysis with three questions, asked in this order. You have met the first. Here are all three, in the notebooks' own words, with what each one is protecting you from.</p>
+
+                    
+                     
+                    <ol>
+                        <li><strong>"Does a simpler solution exist?"</strong> — the closed-form rule and its softer cousins: a threshold, a climatology, an existing product. If a simpler tool does nearly as well, the simpler tool wins, because it is cheaper to run, easier to explain and harder to break.</li>
+                        <li><strong>"Can machine learning requirements be met?"</strong> — enough records, with the answers attached, that describe the conditions you will actually predict in. Unidata's team "will have thousands of data records to use in development." A small record with little variety — in Google's Crash Course's words, "If your dataset is small and without much variation, you may not benefit from machine learning" — and a record that covers only one season cannot predict another.</li>
+                        <li><strong>"Which scientific question should be answered?"</strong> — written as a single sentence somebody will act on: "Will the precipitation at a certain location and time be rain or snow?" A target that answers no decision anyone will make is the first failure in the analysis spine.</li>
+                    </ol>
+
+                     
+                    
+                    <figure>
+                        <img aria-describedby="cap-08" class="img-responsive center-block" style="width:100%;height:auto" src="media/graphics/three-framing-questions.png" width="1200" height="640" alt="Three stacked cards, Unidata's framing questions 1 to 3, each with what it protects you from; the third is gold because it feeds step 1 of the spine.">
+                        <figcaption class="small" id="cap-08">Unidata's three framing questions as stacked cards with what each protects against; gold on the third, which feeds step 1 of the spine. © 2026 Glen Buchanan, CC BY 4.0.</figcaption>
+                    </figure>
+
+                    
+                    <p>The second question deserves one more sentence from the Crash Course, because it is where Earth-system records so often fall short: "a dataset might contain 100 years worth of data, but only for the month of July. Using this dataset to predict rainfall in January would produce poor predictions." Coverage of the conditions you will predict in matters more than the raw count of records.</p>
+
+                     
+                    <figure>
+                        <img aria-describedby="cap-09" class="img-responsive center-block" style="width:100%;height:auto" src="media/sourced/svs4278-gpm-snowstorm-2015-02-17.jpg" width="1200" height="675" alt="GPM satellite 3-D view of a 17 February 2015 storm over the eastern United States: a curtain of precipitation rates, rain south, snow north.">
+                        <figcaption class="small" id="cap-09">Rain or snow? The target Unidata's third question asks about: GPM's view of a 17 February 2015 storm, rain to the south, snow to the north. NASA's Scientific Visualization Studio; data provided by the joint NASA/JAXA GPM mission; visualizations by Kel Elkins (USRA). Public domain.</figcaption>
+                    </figure>
+
+                    
+                    <p>Unidata's README states the stance of this whole section in one line: "machine learning is not a catch-all solution to every problem!" Answering the three questions honestly, before any data are loaded, is objective O1 in practice.</p>
+
+                    
+                    <div class="panel panel-default interaction-question">
+                        <div class="panel-body">
+                            <div class="question-wrap checkboxes">
+                                <h4>Question 3</h4>
+                                <p id="q03-text">A colleague brings you four findings from the framing step. Which of them argue <em>against</em> going ahead with a supervised model? (select all that apply)</p>
+                                <form action="#">
+                                    <fieldset aria-labelledby="q03-text">
+                                        <div class="response-group-item correct"><input id="q03a" name="q03" value="a" type="checkbox"><label for="q03a"> <strong>a) </strong>A single threshold on one variable gets within a point or two of the model on the validation set</label></div>
+                                        <div class="response-group-item"><input id="q03b" name="q03" value="b" type="checkbox"><label for="q03b"> <strong>b) </strong>There are thousands of records, each with the observed outcome attached</label></div>
+                                        <div class="response-group-item correct"><input id="q03c" name="q03" value="c" type="checkbox"><label for="q03c"> <strong>c) </strong>Nobody has written down the decision the prediction will change</label></div>
+                                        <div class="response-group-item"><input id="q03d" name="q03" value="d" type="checkbox"><label for="q03d"> <strong>d) </strong>The inputs co-vary and no single threshold separates the two classes well</label></div>
+                                        <input class="submit-button btn btn-primary" name="submit-button" value="Done" type="button">
+                                    </fieldset>
+                                </form>
+                                <div class="answer">
+                                    <p class="response">The correct answers are a and c.</p>
+                                    <p class="explanation">(a) is <em>a simpler solution exists</em> — if a threshold is nearly as good, use the threshold. (c) is a missing scientific question — a target that answers no decision. (b) and (d) argue <em>for</em> machine learning: the requirements can be met, and the problem is one a conditional statement handles badly. What the feedback adds: Unidata's conclusion to its own notebook is that "rarely is there a single correct answer" — the framing step produces a justified decision, not a verdict, and you will be asked to write that justification down in Module 2's handbook.</p>
+                                </div>
+                                <div class="message" role="alert">Please make a selection.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <p class="small">Sources on this page: NSF Unidata, <em>Supervised Machine Learning Readiness</em> README and notebooks (Apache-2.0); Google Machine Learning Crash Course, "Supervised Learning", CC BY 4.0. Figures: three framing questions © 2026 Glen Buchanan, CC BY 4.0; GPM snowstorm NASA's Scientific Visualization Studio, public domain.</p>
+                
+<div class="stage_nav"><ul class="pager"><li class="previous"><a href="#page_2-2-0">&larr; Previous</a></li> <li class="next"><a href="#page_3-0-0">Next &rarr;</a></li></ul></div>
+</div>
+<div class="lesson-page" id="page_3-0-0" style="display:none">
+                    <h3 class="sub_head">The analysis spine</h3>
+
+                    
+                    <p>Every supervised analysis in this course follows one fixed sequence. It is taken from the section headings of Unidata's two notebooks. First, problem framing. Then data handling: locate the data and write its metadata document, explore the target and the inputs, create a splitting strategy. Then model development: choose an algorithm and inputs, train, validate, evaluate and refine through iterative trials, test, and evaluate and justify. This lesson compresses those headings to eight words, so that you can hold the whole thing in your head: <strong>frame, data, split, train, validate, refine, test, justify</strong>.</p>
+
+                     
+                    <figure>
+                        <img aria-describedby="cap-10" class="img-responsive center-block" style="width:100%;height:auto" src="media/graphics/spine-rail.png" width="1200" height="420" alt="Eight nodes on a rail, Frame to Justify, shaded along a gold ramp and grouped as problem framing, data handling and model development.">
+                        <figcaption class="small" id="cap-10">The eight-word spine as a rail with the gold ramp along it — the compressed form of Unidata's section headings. © 2026 Glen Buchanan, CC BY 4.0.</figcaption>
+                    </figure>
+
+                    
+                    <p>The spine is not ceremony. Each step exists because skipping it produces a specific, named failure. Several of those failures look like success from the inside: the score goes <em>up</em>. Leakage is the one this module dwells on. It is scikit-learn's own example, and it "results in overly optimistic performance estimates". The next page lists all eight. The page after it works through the one that matters most on NSF NCAR's data.</p>
+
+                    
+                    <p class="small">Source on this page: NSF Unidata, <em>Supervised Machine Learning Readiness</em> notebooks, Apache-2.0. Figure: © 2026 Glen Buchanan, CC BY 4.0.</p>
+                
+<div class="stage_nav"><ul class="pager"><li class="previous"><a href="#page_2-3-0">&larr; Previous</a></li> <li class="next"><a href="#page_3-1-0">Next &rarr;</a></li></ul></div>
+</div>
+<div class="lesson-page" id="page_3-1-0" style="display:none">
+                    <h3 class="sub_head">Eight steps, one failure each</h3>
+
+                    
+                    <figure>
+                        <img aria-describedby="cap-11" class="img-responsive center-block" style="width:100%;height:auto" src="media/graphics/analysis-spine.png" width="1200" height="700" alt="Eight numbered boxes, Frame to Justify, joined by arrows, each with the failure it guards against; the failures are listed in this page's text.">
+                        <figcaption class="small" id="cap-11">The spine and its failures. © 2026 Glen Buchanan, CC BY 4.0.</figcaption>
+                    </figure>
+
+                    
+                    <p><strong>1. Frame</strong> guards against a target that does not answer the decision anyone will make. Unidata's third framing question — "Which scientific question should be answered?" — is the whole step.</p>
+
+                    
+                    
+                    <p><strong>2. Data</strong> guards against inputs whose origin and quality were never recorded. Unidata's notebooks require a metadata document (general information, structure, quality, provenance) before any plot is drawn; for NSF NCAR data that document carries the dataset's DOI and the citation the UCAR Data Terms of Use require you to use.</p>
+
+                    
+                    <p><strong>3. Split</strong> guards against training and scoring sets that share information, so that the "unseen" score is inflated. scikit-learn's name for this is data leakage: "information that would not be available at prediction time is used when building the model. This results in overly optimistic performance estimates … and thus poorer performance when the model is used on actually novel data." The rule: "Always split the data into train and test subsets first, particularly before any preprocessing steps", and "never call fit on the test data."</p>
+
+                    
+                    <p><strong>4. Train</strong> guards against a fit that cannot be rerun because its settings and its random seed were not recorded. scikit-learn's recommendation is to "declare a rng variable at the top of the program, and pass it down to any object that accepts a random_state parameter" — then "the result of this script will always be 0.84, no matter how many times we run it."</p>
+
+                     
+                    
+                    <figure>
+                        <img aria-describedby="cap-12" class="img-responsive center-block" style="width:100%;height:auto" src="media/graphics/eight-failures.png" width="1200" height="700" alt="Eight cards, one per spine step, naming its failure; Split, Validate and Test carry a gold badge (score up, result ruined), the rest grey.">
+                        <figcaption class="small" id="cap-12">The eight failures as a card set, marking the three that look like success from the inside (leakage, memorising, tuning toward the test set). © 2026 Glen Buchanan, CC BY 4.0.</figcaption>
+                    </figure>
+
+                    
+                    <p><strong>5. Validate</strong> guards against tuning with no held-out score to show whether the model is memorising. A model "that would just repeat the labels of the samples that it has just seen would have a perfect score but would fail to predict anything useful on yet-unseen data. This situation is called overfitting." The validation set is the held-out part you tune against; the test set is the part you never touch until the end.</p>
+
+                    
+                    <p><strong>6. Refine</strong> guards against stopping at the first configuration tried, so that whether another does better is unknown. Unidata's instruction is to run "new trials … until you are satisfied with the evaluation metrics, or they no longer improve with new trials." Module 2 adds the honest version of "no longer improve": compare trials as a paired test across runs, so that a gap inside the run-to-run spread is not read as a difference.</p>
+
+                    
+                    <p><strong>7. Test</strong> guards against a final number that was tuned toward through repeated use of the same held-out cases. scikit-learn again: parameters "can be tweaked until the estimator performs optimally. This way, knowledge about the test set can 'leak' into the model and evaluation metrics no longer report on generalization performance." One look at the test set, at the end.</p>
+
+                    
+                    <p><strong>8. Justify</strong> guards against a model chosen for its sophistication rather than its measured performance and cost. Unidata's closing exercise asks whether the model "provides sufficient skill for the needs of the situation" and reminds you that "decision makers rely on this type of analysis to assess risk, costs, and benefits." If the simplest model wins on the measurement, you keep the simplest model and say so.</p>
+
+                    
+                    <div class="panel panel-default interaction-question">
+                        <div class="panel-body">
+                            <div class="question-wrap radio">
+                                <h4>Question 4</h4>
+                                <p id="q04-text">A model's validation score is excellent. The first time it is applied to a genuinely new case it does much worse, and nothing about the new case looks unusual. Which step was most likely skipped or done wrong? (choose the best answer)</p>
+                                <form action="#">
+                                    <fieldset aria-labelledby="q04-text">
+                                        <div class="response-group-item"><input id="q04a" name="q04" value="a" type="radio"><label for="q04a"> <strong>a) </strong>Frame</label></div>
+                                        <div class="response-group-item correct"><input id="q04b" name="q04" value="b" type="radio"><label for="q04b"> <strong>b) </strong>Split</label></div>
+                                        <div class="response-group-item"><input id="q04c" name="q04" value="c" type="radio"><label for="q04c"> <strong>c) </strong>Refine</label></div>
+                                        <div class="response-group-item"><input id="q04d" name="q04" value="d" type="radio"><label for="q04d"> <strong>d) </strong>Justify</label></div>
+                                        <input class="submit-button btn btn-primary" name="submit-button" value="Done" type="button">
+                                    </fieldset>
+                                </form>
+                                <div class="answer">
+                                    <p class="response">The correct answer is b.</p>
+                                    <p class="explanation">An excellent held-out score followed by poor performance on new data is the signature of leakage: the "unseen" cases were not really unseen. The commonest cause is subtle — a preprocessing step (a mean, a scaler) fitted on all the data before the split, so that the training set already knew something about the test set. scikit-learn's remedy is a Pipeline, which "ensures that the appropriate method is performed on the correct data subset": fit_transform on the training subset, transform only on the rest. Module 2 uses one for exactly this reason.</p>
+                                </div>
+                                <div class="message" role="alert">Please make a selection.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <p class="small">Sources on this page: scikit-learn User Guide, "Common pitfalls and recommended practices" and "Cross-validation", © 2007–2026 The scikit-learn developers, BSD-3-Clause; NSF Unidata, <em>Supervised Machine Learning Readiness</em> notebooks, Apache-2.0; CESM2 LENS on AWS, UCAR Data Terms of Use. Figures: © 2026 Glen Buchanan, CC BY 4.0.</p>
+                
+<div class="stage_nav"><ul class="pager"><li class="previous"><a href="#page_3-0-0">&larr; Previous</a></li> <li class="next"><a href="#page_3-2-0">Next &rarr;</a></li></ul></div>
+</div>
+<div class="lesson-page" id="page_3-2-0" style="display:none">
+                    <h3 class="sub_head">The leakage lesson: splitting a large ensemble</h3>
+
+                    
+                    
+                    <p>The data for Modules 2 and 3 are the CESM2 Large Ensemble. Its authors describe it as "a 100-member large ensemble suite conducted with CESM2 … The simulations cover the period from 1850–2100 and follow the historical and SSP3-7.0 forcing protocols provided by CMIP6 … although with some differences noted below for the representation of biomass burning in 50 of the 100 ensemble members" (Rodgers et al. 2021). In plain terms: one hundred runs of the same model, each from different initial conditions. They come in two halves of 50 that differ in their biomass-burning forcing. One half smooths that forcing over 1990–2020, as the project page records. For machine learning that structure is a trap. The trap is the best teaching case this course has.</p>
+
+                     
+                    <figure>
+                        <img aria-describedby="cap-13" class="img-responsive center-block" style="width:100%;height:auto" src="media/sourced/rodgers2021-fig1-ensemble-1850-2100.png" width="1200" height="534" alt="Time series 1850 to 2100 of top-of-atmosphere radiation flux anomaly: ensemble mean in black, grey spread across 100 members, red observations.">
+                        <figcaption class="small" id="cap-13">One hundred runs of one model: the ensemble mean (line), the spread across members (shading) and observations (red) for top-of-atmosphere radiation flux, 1850–2100. The spread is internal variability — each member is one continuous run, which is why the split must hold whole members out. The historical period to 2014 sits on a light blue field, the projection on pink. © Author(s) 2021. Rodgers, K. B. et al., "Ubiquity of human-induced changes in climate variability", Earth Syst. Dynam. 12, 1393–1411 (2021), https://doi.org/10.5194/esd-12-1393-2021, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); Fig. 1 panel (a), cropped and resized, the neighbouring panels' overlapping marks masked; otherwise unaltered.</figcaption>
+                    </figure>
+
+                    
+                    <p>The natural instinct is to hold out some <em>years</em> as the test set. scikit-learn explains why that instinct is wrong whenever samples come in dependent groups. "The i.i.d. assumption is broken if the underlying generative process yields groups of dependent samples … we need to ensure that all the samples in the validation fold come from groups that are not represented at all in the paired training fold". Its example is patients with several samples each. Here the group is the <strong>ensemble member</strong>. One member is one continuous run. Its neighbouring years are not independent samples. A split by year leaves every member on both sides: the model has already seen each test member's own realisation of internal variability, and at the cut its test years follow directly on training years of the same run. A split by member keeps each run whole on one side.</p>
+
+                    
+                    <p>The ensemble's own authors say how long that memory lasts. In their words, "the initialization procedure should not be considered to produce members that are independent, or to have randomized modes of climate variability, for the years immediately subsequent to 1850". Eighty of the hundred members were started twenty at a time, from four control-run years, with a round-off-size perturbation. The other twenty each start from a different year, 1001 to 1191 at ten-year steps. The micro-members' mean AMOC strength "converge[s] only after several decades". So in the early record a split by member alone still leaks, between micro-members that share a start year. The course groups by initialization cluster, or starts the analysis window after the memory has faded.</p>
+
+                    
+                    <figure>
+                        <img aria-describedby="cap-14" class="img-responsive center-block" style="width:100%;height:auto" src="media/graphics/split-by-member.png" width="1200" height="600" alt="Two member-by-year grids: splitting by year puts every member on both sides of the cut; splitting by member holds whole members out as unseen.">
+                        <figcaption class="small" id="cap-14">Hold out members, never years: a year split leaves each run on both sides of the cut. © 2026 Glen Buchanan, CC BY 4.0.</figcaption>
+                    </figure>
+
+                    
+                    
+                    <p>This is how published work on the ensemble already splits it. Mamalakis, Barnes and Ebert-Uphoff (2023; arXiv v1 2022) trained a network on CESM2-LE yearly temperature maps to recover the forced warming signal. They write simply: "We train on 70 members and test on the remaining 10 members". Module 2 does the same with scikit-learn's <em>StratifiedGroupKFold</em>, the stratified version of <em>GroupKFold</em>, which "ensures that the same group is not represented in both testing and training sets". Its notebook asserts that no member appears on both sides before any model is trained.</p>
+
+                    
+                    
+                    <div class="panel panel-default interaction-question">
+                        <div class="panel-body">
+                            <div class="question-wrap radio">
+                                <h4>Question 5</h4>
+                                <p id="q05-text">You train on 1850–1999 of every CESM2 LENS member and test on 2000–2014 of every member. Is the test set unseen? (choose the best answer)</p>
+                                <form action="#">
+                                    <fieldset aria-labelledby="q05-text">
+                                        <div class="response-group-item"><input id="q05a" name="q05" value="a" type="radio"><label for="q05a"> <strong>a) </strong>Yes — none of the test years appear in training</label></div>
+                                        <div class="response-group-item correct"><input id="q05b" name="q05" value="b" type="radio"><label for="q05b"> <strong>b) </strong>No — every member sits on both sides, and neighbouring years within one member's run are not independent of each other</label></div>
+                                        <div class="response-group-item"><input id="q05c" name="q05" value="c" type="radio"><label for="q05c"> <strong>c) </strong>Yes, provided the random seed is recorded</label></div>
+                                        <div class="response-group-item"><input id="q05d" name="q05" value="d" type="radio"><label for="q05d"> <strong>d) </strong>No — a test set must hold at least half of the data</label></div>
+                                        <input class="submit-button btn btn-primary" name="submit-button" value="Done" type="button">
+                                    </fieldset>
+                                </form>
+                                <div class="answer">
+                                    <p class="response">The correct answer is b.</p>
+                                    <p class="explanation">The test years are new, but the test <em>members</em> are not: every member is on both sides of the cut, so the model has already seen each test member's own realisation of internal variability — and at the boundary, each member's 2000 follows directly on its 1999. A split by member removes both: no test member has any year of its own run in training. The seed (c) fixes reproducibility, not leakage, and the proportion (d) is a convention, not a rule. What the feedback adds: a <em>random</em> holdout of years leaks worse than this block does. scikit-learn makes the point with news articles ordered in time: shuffle them and the model is "tested on samples that are artificially similar (close in time) to training samples", which gives "an inflated validation score". In a random year holdout every test year has its own run's neighbouring years in training, not only the one at the cut.</p>
+                                </div>
+                                <div class="message" role="alert">Please make a selection.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <p class="small">Sources on this page: Rodgers et al. (2021), Earth Syst. Dynam. 12, 1393–1411, CC BY 4.0, https://doi.org/10.5194/esd-12-1393-2021; CESM2 Large Ensemble Community Project page, https://www.cesm.ucar.edu/community-projects/lens2 (© 2026 UCAR, read 2026-10-19; facts located, not reproduced); scikit-learn User Guide, "Cross-validation", BSD-3-Clause; Mamalakis, Barnes &amp; Ebert-Uphoff (2022), arXiv:2208.09473v1, CC BY 4.0. Figures: Rodgers et al. (2021) Fig. 1 panel (a), CC BY 4.0, cropped and resized; the neighbouring panels' overlapping marks masked; otherwise unaltered; split-by-member © 2026 Glen Buchanan, CC BY 4.0.</p>
+                
+<div class="stage_nav"><ul class="pager"><li class="previous"><a href="#page_3-1-0">&larr; Previous</a></li> <li class="next"><a href="#page_4-0-0">Next &rarr;</a></li></ul></div>
+</div>
+<div class="lesson-page" id="page_4-0-0" style="display:none">
+                    <h3 class="sub_head">ML at NSF NCAR today</h3>
+
+                    
+                    <p>You are not starting from nothing. NSF NCAR runs a published AI programme, ships its own AI weather-model framework, runs GPU systems its documentation names for AI/ML jobs, and distributes the data this course uses. This section is a map of those four things as they stand on the day this lesson was written, with every claim tied to a public page and its read date — because the programme changes, and a map without a date is a rumour.</p>
+
+                     
+                    <figure>
+                        <img aria-describedby="cap-15" class="img-responsive center-block" style="width:100%;height:auto" src="media/sourced/ucar-cheyenne-precipitation-simulation.jpg" width="1200" height="513" alt="A single wide global map, one frame from a precipitation simulation run on the Cheyenne supercomputer: the oceans a pale blue texture, a band of heavy accumulated rainfall in purple along the tropics and across the western Pacific and South Asia, smaller purple and amber patches over the storm tracks, and the continents in white and grey with black coastlines.">
+                        <figcaption class="small" id="cap-15">NSF NCAR computes the Earth system at scale: one frame from a global precipitation simulation run on Cheyenne, May–November 2015 — heavy rainfall in purple along the tropics. Visualization by NCAR Computational and Information Systems Laboratory, based on research led by Benjamin A. Cash, George Mason University. Courtesy of UCAR — non-commercial use under UCAR's media terms; not part of this lesson's CC BY grant.</figcaption>
+                    </figure>
+
+                    
+                    <p>Two cautions before the map. First, this lesson is independent of NSF NCAR; what follows describes their public pages, it does not speak for them. Second, where a placement is this lesson's own reading — which focus area a piece of software <em>belongs</em> to, for instance — the text says so.</p>
+
+                      
+                    
+                    <figure>
+                        <img aria-describedby="cap-28" class="img-responsive center-block" style="width:100%;height:auto" src="media/graphics/ml-at-ncar-four-things.png" width="1200" height="600" alt="Four cards in a row, read left to right, for the four things NSF NCAR does that this section maps: a published AI programme (Artificial Intelligence for Earth System Science), its own AI weather-model framework (CREDIT, which trains and deploys AI atmospheric prediction models), GPU systems its documentation names for AI/ML jobs (Derecho and Casper), and, in gold, the data this course uses (CESM2 LENS); the three described-only cards have grey hatched headers; a footer says the map carries a date and that the lesson is independent of NSF NCAR.">
+                        <figcaption class="small" id="cap-28">The four things this section maps, as four cards read left to right: gold, solid on the data this course itself uses; grey, hatched on the three the section describes from public pages. © 2026 Glen Buchanan, CC BY 4.0.</figcaption>
+                    </figure>
+
+                    
+                    <p class="small">Source on this page: NSF NCAR Artificial Intelligence for Earth System Science, https://ncarprojects.ucar.edu/ai (© 2026 UCAR, read 2026-10-19; cited, not reproduced). Figures: courtesy of UCAR, non-commercial use under UCAR's media terms (https://www.ucar.edu/terms-of-use/media); not part of this lesson's CC BY grant; ml-at-ncar-four-things © 2026 Glen Buchanan, CC BY 4.0.</p>
+                
+<div class="stage_nav"><ul class="pager"><li class="previous"><a href="#page_3-2-0">&larr; Previous</a></li> <li class="next"><a href="#page_4-1-0">Next &rarr;</a></li></ul></div>
+</div>
+<div class="lesson-page" id="page_4-1-0" style="display:none">
+                    <h3 class="sub_head">The AI Program's six focus areas</h3>
+
+                    
+                    <p>The NSF NCAR AI Program's public page was read on 2026-10-19. It describes the programme as building shared AI/ML capability with and for the community. It lists six focus areas, each with its own sub-page. Their published names are:</p>
+
+                    
+                    <ul>
+                        <li><strong>AI-Enabled Modeling and Tools</strong></li>
+                        <li><strong>AI-Ready Data and Research Cyberinfrastructure</strong></li>
+                        <li><strong>Our Science Using AI</strong></li>
+                        <li><strong>Benchmarking and Evaluation</strong></li>
+                        <li><strong>Responsible and Reliable AI</strong></li>
+                        <li><strong>Community and Workforce Development</strong></li>
+                    </ul>
+
+                    
+                    <figure>
+                        <img aria-describedby="cap-16" class="img-responsive center-block" style="width:100%;height:auto" src="media/graphics/ncar-ai-program-map.png" width="1200" height="650" alt="Six boxes, one per NSF NCAR AI Program focus area, with this lesson's placements of CREDIT, CESM2 LENS, trust checks and itself under four.">
+                        <figcaption class="small" id="cap-16">The six focus areas as published; notes under four of them place CREDIT, CESM2 LENS, WeatherBench 2 style trust checks and this lesson — the placements are this lesson's reading, not NSF NCAR's. Gold solid: areas this lesson's examples come from; light gold dashed: areas this course itself stands in; warm grey dotted: areas the lesson places nothing under. © 2026 Glen Buchanan, CC BY 4.0.</figcaption>
+                    </figure>
+
+                    
+                    <p>Three of the six matter directly to this course. The <em>Benchmarking and Evaluation</em> page describes an evaluation infrastructure. It spans physical consistency, uncertainty quantification and reliability, with open platforms and standardised protocols. It is the house home of the question the last section of this module asks: when should a model's output not be trusted? The <em>AI-Ready Data</em> page offers a library of Earth system science data for training AI/ML models on GDEX. It names no dataset. That is why the next page is careful about what it claims for CESM2 LENS. <em>Community and Workforce Development</em> describes instructor-led courses and self-paced, asynchronous training modules. It links the machine-learning bootcamp this course was written to stand beside.</p>
+
+                    
+                    <p>A note on counting. The six areas are as the programme page listed them on 2026-10-19. The lesson carries that date. If the list changes, the programme page is the authority.</p>
+
+                    
+                    <p class="small">Source on this page: https://ncarprojects.ucar.edu/ai and its sub-pages /ai/evaluation, /ai/data-infra, /ai/community-workforce (© 2026 UCAR, read 2026-10-19; facts located and paraphrased, not reproduced). Figure: © 2026 Glen Buchanan, CC BY 4.0.</p>
+                
+<div class="stage_nav"><ul class="pager"><li class="previous"><a href="#page_4-0-0">&larr; Previous</a></li> <li class="next"><a href="#page_4-2-0">Next &rarr;</a></li></ul></div>
+</div>
+<div class="lesson-page" id="page_4-2-0" style="display:none">
+                    <h3 class="sub_head">CREDIT, Derecho's GPUs, and CESM2 LENS</h3>
+
+                    
+                    <p><strong>CREDIT.</strong> NSF NCAR's own AI weather-model software is the Community Research Earth Digital Intelligence Twin, from the MILES group. Its README says: "CREDIT is an open software platform to train and deploy AI atmospheric prediction models. CREDIT offers fast models that can be flexibly configured both in terms of input data and neural network architecture … CREDIT has reached its first stable release with a full set of models, training, and deployment options". Model weights are published for its WXFormer and FuXi models and for the CAMulator climate emulator. The README points to "the NCAR Casper/Derecho install paths" for running it in house. This lesson places CREDIT under AI-Enabled Modeling and Tools. That is the lesson's reading of the focus-area names, not a line from the programme page.</p>
+
+                    
+                    <p>The framework paper states both the promise and the problem. This course spends its last section on that problem. CREDIT's authors report that their models, "trained on six-hourly ERA5 … generally outperform IFS HRES in 10-day forecasts". They name "compounding error growth" as a common issue AI weather models must be built to resist. Keep the phrase "10-day". It is the window inside which that claim was evaluated.</p>
+
+                     
+                    <figure>
+                        <img aria-describedby="cap-17" class="img-responsive center-block" style="width:100%;height:auto" src="media/sourced/ucar-derecho-cabinet.jpg" width="1200" height="860" alt="A systems engineer gestures beside an open Derecho cabinet, blades and red and blue cooling hoses exposed, as a visitor watches, at the NWSC.">
+                        <figcaption class="small" id="cap-17">Derecho, NSF NCAR's 2023 supercomputer: 2,488 CPU nodes and 82 GPU nodes with four NVIDIA A100s each. Jared Baker, a systems engineer at NWSC, displays one of its cabinets — photograph from NSF NCAR & UCAR News, 21 August 2023 (the inauguration article; the photograph's own date is not stated). Courtesy of UCAR — non-commercial use under UCAR's media terms; not part of this lesson's CC BY grant.</figcaption>
+                    </figure>
+
+                    
+                    
+                    
+                    <p><strong>Derecho's GPUs.</strong> The NSF NCAR HPC documentation (CC BY-SA 4.0) states, verbatim: "Installed in 2023, Derecho is NCAR's latest supercomputer. Derecho features 2,488 compute nodes with 128 AMD Milan cores per node and 82 nodes with four NVIDIA A100 GPUs each". The hardware table gives "328 total A100 GPUs" with "40GB HBM2 memory per GPU". The documentation names Derecho for running "simulations and AI/ML jobs", and it names the sibling Casper cluster for AI/ML work too. CREDIT's README points to Derecho and Casper for its install paths. No public page read for this course says on which system any particular model was trained. This course does not need any of it. Modules 1 and 2, and Module 3's neural network, run on a laptop from the AWS copy of the data. Module 3's single inference step uses one GPU of at least 48 GB. Derecho's A100s carry 40 GB each; the course's one run peaked at 40,325 MiB on a 48 GB card and ran out of memory on a 24 GB card, so a 40 GB A100 is untested and may not hold it. On NSF NCAR's systems the step fits Casper. Its documentation lists eight nodes with four "NVIDIA Ampere A100 80GB" GPUs and two with four "NVIDIA Hopper H100 80GB" GPUs. One route to such a GPU is a classroom or workshop allocation. The AI Program's Community Support page says these "support educational activities, including running and teaching AI models for Earth system science (no NSF award required)". That page addresses U.S.-based researchers and students, and it names no system. That a staff cohort would take this route is the course's reading, not the page's words. Staff may equally compute under their own lab's allocation.</p>
+
+                     
+                    <figure>
+                        <img aria-describedby="cap-18" class="img-responsive center-block" style="width:100%;height:auto" src="media/sourced/ucar-credit-camulator-dashboard.png" width="1200" height="658" alt="Dashboard screenshot, Gen2 Forecast vs Truth: a global map of forecast west-east wind, a difference map, a vertical slice and a time series.">
+                        <figcaption class="small" id="cap-18">What CREDIT produces: a viewer of CAMulator's west–east wind — the forecast, the truth, and their difference — with a vertical slice and a point time series. Courtesy of UCAR — non-commercial use under UCAR's media terms; not part of this lesson's CC BY grant. For CREDIT's published evaluation see Schreck et al. (2025), npj Clim. Atmos. Sci. 8, 239, <a href="https://doi.org/10.1038/s41612-025-01125-6" target="_blank" style="text-decoration:underline">doi:10.1038/s41612-025-01125-6</a>, Fig. 5 (CC BY-NC-ND 4.0 — linked, not reproduced).</figcaption>
+                    </figure>
+
+                    
+                     
+                    <p><strong>InferStudio.</strong> NSF NCAR also ships the house route for running that kind of inference. InferStudio is "NSF NCAR's web application for running AI weather model inference and visualizing the results". It runs on Casper. It runs AIFS, Aurora and Pangu through earth2studio, with scoring against GFS analysis. It runs WXFormer through CREDIT for inference only; its visualisation and scoring are not yet wired up. All of this sits behind one interface: choose a model, an initial time and a lead time. An "Instructor" persona is written into its documentation. It needs an NSF NCAR HPC account and a project code. It carries no objectives, exercises or assessment. That is why this course's own inference step does not depend on InferStudio: you run it with the Microsoft <em>aurora</em> package on any GPU of at least 48 GB — under an NSF NCAR allocation if you have one, elsewhere if you do not.</p>
+
+                    
+                    
+                    <p><strong>CESM2 LENS.</strong> The Large Ensemble was made by NSF NCAR with the IBS Center for Climate Physics (South Korea). NSF NCAR distributes it. A subset sits on Amazon S3 as open data: no account, no cost to read. It is "~275 Zarr stores", each holding one variable for one run type and frequency. The UCAR Data Terms of Use license it under CC BY 4.0. They bind you to the citation NSF NCAR recommends: the dataset DOI (Grover &amp; Banihirwe 2021, https://doi.org/10.26024/y48t-q717) and Rodgers et al. (2021). Every figure this course makes from the ensemble carries that line.</p>
+
+                     
+                    <figure>
+                        <img aria-describedby="cap-19" class="img-responsive center-block" style="width:100%;height:auto" src="media/graphics/three-things-today.png" width="1200" height="520" alt="Three cards, CREDIT, Derecho's GPUs and CESM2 LENS on AWS, each with what it needs; the LENS card is gold, usable today. Card text follows.">
+                        <figcaption class="small" id="cap-19">CREDIT, Derecho's GPUs and CESM2 LENS on AWS as a card row with what each needs; gold on the one usable from a laptop today. © 2026 Glen Buchanan, CC BY 4.0.</figcaption>
+                    </figure>
+                       
+                    <ul>
+                        <li><strong>CREDIT</strong> — open software to train and deploy AI atmospheric prediction models (Apache-2.0); weights published for WXFormer, FuXi and CAMulator. Needs: a GPU install (Casper or Derecho paths).</li>
+                        <li><strong>Derecho's GPUs</strong> — 328 A100 GPUs, 40 GB each; Casper's A100 and H100 80 GB nodes for the course's 48 GB inference step. Needs: an NSF NCAR HPC allocation.</li>
+                        <li><strong>CESM2 LENS on AWS</strong> — about 275 Zarr stores, open data, CC BY 4.0 with a required citation (two DOIs). Needs: nothing — no account, no cost. Gold: usable from a laptop today; Modules 2 and 3 run on it.</li>
+                    </ul>
+
+                    
+                    <p>Be precise about what LENS is to machine learning. It is NSF NCAR data that published ML work trains on. Mamalakis, Barnes and Ebert-Uphoff (2023; arXiv v1 2022), at Colorado State University, trained their network on 70 of its members and held out 10. This lesson does <em>not</em> say that NSF NCAR trains its own models on LENS. The AI-Ready Data page names no dataset. No public source read for this course makes that claim. The difference between <em>data that ML work trains on</em> and <em>data NSF NCAR trains on</em> is small in words. It is large in what you would be asserting about an institution. This is the register the whole section is written in.</p>
+
+                    
+                    
+                    
+                    <div class="panel panel-default interaction-question">
+                        <div class="panel-body">
+                            <div class="question-wrap radio">
+                                <h4>Question 6</h4>
+                                <p id="q06-text">Which statement about CESM2 LENS and machine learning is supported by what this lesson cites? (choose the best answer)</p>
+                                <form action="#">
+                                    <fieldset aria-labelledby="q06-text">
+                                        <div class="response-group-item"><input id="q06a" name="q06" value="a" type="radio"><label for="q06a"> <strong>a) </strong>NSF NCAR trains its AI weather models on CESM2 LENS</label></div>
+                                        <div class="response-group-item correct"><input id="q06b" name="q06" value="b" type="radio"><label for="q06b"> <strong>b) </strong>CESM2 LENS is NSF NCAR data that published machine-learning work trains on, for example 70 members trained on and 10 held out</label></div>
+                                        <div class="response-group-item"><input id="q06c" name="q06" value="c" type="radio"><label for="q06c"> <strong>c) </strong>CESM2 LENS is an AI weather model developed by the MILES group</label></div>
+                                        <div class="response-group-item"><input id="q06d" name="q06" value="d" type="radio"><label for="q06d"> <strong>d) </strong>Reading CESM2 LENS from AWS requires an NSF NCAR account</label></div>
+                                        <input class="submit-button btn btn-primary" name="submit-button" value="Done" type="button">
+                                    </fieldset>
+                                </form>
+                                <div class="answer">
+                                    <p class="response">The correct answer is b.</p>
+                                    <p class="explanation">(a) is not supported by any page read for this course; the AI-Ready Data page names no dataset. (c) confuses the data with CREDIT. (d) is false — the registry's own access line is "No AWS account required". What the feedback adds: CREDIT's WXFormer and FuXi weather models are trained on ERA5, a reanalysis of the real atmosphere (Schreck et al. 2024), not on a climate-model ensemble; that is the difference between an AI weather model (Section 5) and the classifier you build on LENS in Module 2.</p>
+                                </div>
+                                <div class="message" role="alert">Please make a selection.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <p class="small">Sources on this page: NCAR/miles-credit README, Apache-2.0, read 2026-10-19; Schreck et al. (2024), arXiv:2411.07814, CC BY 4.0; NSF NCAR HPC Documentation, "Derecho", © 2023–2026 UCAR, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/), quoted unaltered, read 2026-10-19; NSF NCAR HPC Documentation, "Casper", © 2023–2026 UCAR, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/), quoted unaltered, read 2026-10-20; NCAR/InferStudio README (© NSF NCAR/UCAR, no licence published; brief excerpt, read 2026-10-20); NSF NCAR AI Program, "Community Support" (© 2026 UCAR, read 2026-10-19, brief excerpt); Registry of Open Data on AWS, CESM2 LENS entry (Apache-2.0) and UCAR Data Terms of Use (CC BY 4.0); Mamalakis et al. (2022), arXiv:2208.09473v1, CC BY 4.0. Figures: Derecho cabinet and CREDIT dashboard courtesy of UCAR, non-commercial use under UCAR's media terms (https://www.ucar.edu/terms-of-use/media), not part of this lesson's CC BY grant; three-things card row © 2026 Glen Buchanan, CC BY 4.0.</p>
+                
+<div class="stage_nav"><ul class="pager"><li class="previous"><a href="#page_4-1-0">&larr; Previous</a></li> <li class="next"><a href="#page_4-3-0">Next &rarr;</a></li></ul></div>
+</div>
+<div class="lesson-page" id="page_4-3-0" style="display:none">
+                    <h3 class="sub_head">What staff are taught today</h3>
+
+                    
+                    <p>NSF NCAR's Education, Engagement &amp; Early-Career Development group runs a machine-learning bootcamp. Its title is "Introduction to Machine Learning for Earth System Scientists". It is for "scientists and researchers with little to no knowledge on the topic of ML". The curriculum couples six lectures with hands-on exercises. The lectures cover:</p>
+
+                    
+                    <ul>
+                        <li>supervised basics and neural networks;</li>
+                        <li>an ENSO-phase application with an ANN and a CNN;</li>
+                        <li>explainable AI;</li>
+                        <li>pre-trained models, including "running pre-trained AI4WP/Climate models in inference mode";</li>
+                        <li>decision trees and tree ensembles;</li>
+                        <li>CAMulator, paired with an "Ask an AI expert" session. That session includes the question "Is machine learning appropriate for your science question?" and ends with AI/ML efforts across NSF NCAR.</li>
+                    </ul>
+
+                     
+                    
+                    <figure>
+                        <img aria-describedby="cap-20" class="img-responsive center-block" style="width:100%;height:auto" src="media/graphics/bootcamp-curriculum.png" width="1200" height="600" alt="Six numbered cards, one per bootcamp lecture, the sixth (CAMulator, Ask an AI expert) in gold; the six titles are listed in this page's text.">
+                        <figcaption class="small" id="cap-20">The six-lecture bootcamp curriculum as a numbered card set, gold on the lecture that asks whether machine learning is appropriate for your science question. Titles recorded as facts from the EdEC slides (© UCAR, read 2026-10-19). © 2026 Glen Buchanan, CC BY 4.0.</figcaption>
+                    </figure>
+
+                    
+                    <p>The bootcamp states what you will not get from it. You will not "become a ML expert", "know the mathematics behind ML concepts" or "know how to code ML algorithms". This course is written in the same register: no derivations, no algorithms from scratch. It adds what the bootcamp's public materials do not show. Those are measurable objectives per lecture, exercises recorded against a rubric, and a pretest and quiz aligned to the objectives.</p>
+
+                    
+                    <p>The bootcamp's resources page points to the Unidata eLearning modules this course is a sibling of. Read the two together and the shape of this course is obvious. Unidata gives the spine. The bootcamp gives the house's topics: neural networks, explainability, AI weather models in inference mode. The NSF NCAR-distributed ensemble gives the data.</p>
+
+                    
+                    <p class="small">Source on this page: NSF NCAR EdEC, ML bootcamp curriculum slides (© UCAR; UCAR website Terms of Use; brief excerpts, lecture titles recorded as facts; read 2026-10-19). Figure: © 2026 Glen Buchanan, CC BY 4.0.</p>
+                
+<div class="stage_nav"><ul class="pager"><li class="previous"><a href="#page_4-2-0">&larr; Previous</a></li> <li class="next"><a href="#page_5-0-0">Next &rarr;</a></li></ul></div>
+</div>
+<div class="lesson-page" id="page_5-0-0" style="display:none">
+                    <h3 class="sub_head">What an AI weather model does differently</h3>
+
+                    
+                    <p>Objective O5 asks for two things. First, what an AI weather model does differently from a numerical model. Second, two conditions under which its output should not be trusted. The two are the same fact seen from two sides. ECMWF published the first operational-style assessment of these models (Ben Bouallègue et al. 2023, CC BY-SA 4.0). It says: "An emerging new generation of ML models, developed using high-quality reanalysis datasets like ERA5 for training, allow forecasts that require much lower computational costs and that are highly-competitive in terms of accuracy". The same paragraph ends: "A new NWP paradigm is emerging relying on inference from ML models and state-of-the-art analysis and reanalysis datasets for forecast initialization and model training".</p>
+
+                     
+                    <figure>
+                        <img aria-describedby="cap-21" class="img-responsive center-block" style="width:100%;height:auto" src="media/sourced/svs5158-idalia-franklin-winds.jpg" width="1200" height="708" alt="GEOS model wind streaks curl into two tight spirals over the Gulf of Mexico and the western Atlantic: Hurricanes Idalia and Franklin, August 2023.">
+                        <figcaption class="small" id="cap-21">A numerical model's picture of two storms: GEOS model winds around Hurricanes Idalia and Franklin, August 2023. An AI weather model learns to produce fields like this from decades of past analyses, and runs in minutes. NASA's Scientific Visualization Studio; visualizations by Greg Shirah (NASA/GSFC). Public domain.</figcaption>
+                    </figure>
+
+                    
+                    <p>Hold those two phrases: <em>trained on a reanalysis</em> and <em>run by inference from an analysis</em>. The next page says what they mean mechanically. The page after it says what they cost.</p>
+
+                     
+                    
+                    <figure>
+                        <img aria-describedby="cap-29" class="img-responsive center-block" style="width:100%;height:auto" src="media/graphics/ai-weather-two-sides.png" width="1200" height="600" alt="A gold coin in the middle labelled the one fact — a mapping learned from decades of past analyses, applied to today's analysis — with arrows out to two cards: on the left, gold and solid, side 1, what an AI weather model does differently (trained on a reanalysis, run by inference from an analysis, so forecasts at much lower computational cost in minutes, not hours); on the right, grey, dashed and hatched, side 2, two conditions under which its output should not be trusted, named two pages on.">
+                        <figcaption class="small" id="cap-29">The same fact seen from two sides: the one fact in the middle; what an AI weather model does differently to the left, in gold; two conditions under which its output should not be trusted to the right, in grey, named two pages on. © 2026 Glen Buchanan, CC BY 4.0.</figcaption>
+                    </figure>
+
+                    
+                    <p class="small">Source on this page: Ben Bouallègue et al. (2023), arXiv:2307.10128v2, CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/), quoted unaltered. Figures: NASA's Scientific Visualization Studio, public domain; ai-weather-two-sides © 2026 Glen Buchanan, CC BY 4.0.</p>
+                
+<div class="stage_nav"><ul class="pager"><li class="previous"><a href="#page_4-3-0">&larr; Previous</a></li> <li class="next"><a href="#page_5-1-0">Next &rarr;</a></li></ul></div>
+</div>
+<div class="lesson-page" id="page_5-1-0" style="display:none">
+                    <h3 class="sub_head">Solving the equations vs applying a learned mapping</h3>
+
+                    
+                    <p>A numerical model and an AI weather model start from the same place: today's analysis, the best estimate of the atmosphere's current state. Both produce a sequence of future states. What differs is how each one takes a step. GraphCast's authors put the contrast in one sentence each. "The dominant approach for weather forecasting today is 'numerical weather prediction' (NWP), which involves solving the governing equations of weather using supercomputers". GraphCast, by contrast, "can be trained directly from reanalysis data. It predicts hundreds of weather variables, over 10 days at 0.25° resolution globally, in under one minute".</p>
+
+                    
+                    <figure>
+                        <img aria-describedby="cap-22" class="img-responsive center-block" style="width:100%;height:auto" src="media/graphics/nwp-vs-ai-model.png" width="1200" height="650" alt="Two rows from analysis to forecast: a numerical model integrates the equations on a supercomputer, hours; an AI model applies a mapping, minutes.">
+                        <figcaption class="small" id="cap-22">Two ways from an analysis to a forecast. Both are rolled out one step at a time, the output fed back in; the AI model's speed and its limits come from the same fact — it reproduces regressions found in its training record. © 2026 Glen Buchanan, CC BY 4.0.</figcaption>
+                    </figure>
+
+                    
+                    
+                    
+                    <p>The AI model's step is a mapping, from the state now to the state six hours on. In GraphCast's case it was learned from "39 years (1979–2017) of historical data from ECMWF's ERA5 reanalysis archive". To go further than one step it does what a numerical model does. "Like traditional NWP systems, GraphCast is autoregressive: it can be 'rolled out' by feeding its own predictions back in as input". CREDIT's WXFormer is described the same way, "designed to predict atmospheric states autoregressively". FourCastNet 3 produces "a 60-day global forecast at 0.25°, 6-hourly resolution in under 4 minutes" on a single GPU.</p>
+
+                     
+                    <figure>
+                        <img aria-describedby="cap-23" class="img-responsive center-block" style="width:100%;height:auto" src="media/sourced/charlton-perez-2024-fig4-ciaran-maps.png" width="1200" height="703" alt="Six map panels of Storm Ciaran, 00 UTC 2 November 2023 (ERA5, IFS HRES and four AI models): 10-metre wind speed in colour with pressure contours.">
+                        <figcaption class="small" id="cap-23">Physics and learned mappings side by side on one storm: ERA5 and IFS HRES (top row, left and middle) against GraphCast, Pangu-Weather, FourCastNet and FourCastNet v2 for Storm Ciarán, 00 UTC 2 November 2023. The shape agrees; the peak winds differ. © The Author(s) 2024. Charlton-Perez, A. J. et al., "Do AI models produce better weather forecasts than physics-based models? A quantitative evaluation case study of Storm Ciarán", npj Clim. Atmos. Sci. 7, 93 (2024), https://doi.org/10.1038/s41612-024-00638-w, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); Fig. 4, resized; otherwise unaltered apart from the credit band.</figcaption>
+                    </figure>
+
+                    
+                    <p>Now the sentence that this whole section turns on. Bonavita (2023) examined Pangu-Weather. The paper concludes that such a model "is not a general-purpose atmosphere simulator". Rather, "the current generation of MLWP models are built to discover and reproduce predictable regressions between current and predicted states of the atmospheric training dataset". That is not a criticism. It is a description of what the thing is. A learned mapping reproduces the relations present in its training record. Where the record is rich, it is fast and skilful. Where the record is silent, it has nothing to say, and it will say it anyway.</p>
+
+                    
+                    
+                    
+                    <div class="panel panel-default interaction-question">
+                        <div class="panel-body">
+                            <div class="question-wrap radio">
+                                <h4>Question 7</h4>
+                                <p id="q07-text">What does an AI weather model such as CREDIT's WXFormer or GraphCast do differently from a numerical model? (choose the best answer)</p>
+                                <form action="#">
+                                    <fieldset aria-labelledby="q07-text">
+                                        <div class="response-group-item"><input id="q07a" name="q07" value="a" type="radio"><label for="q07a"> <strong>a) </strong>It solves the governing equations on a finer grid, so it needs a larger supercomputer</label></div>
+                                        <div class="response-group-item correct"><input id="q07b" name="q07" value="b" type="radio"><label for="q07b"> <strong>b) </strong>It applies a mapping learned from past analyses to the current analysis, and steps forward by feeding its output back in</label></div>
+                                        <div class="response-group-item"><input id="q07c" name="q07" value="c" type="radio"><label for="q07c"> <strong>c) </strong>It needs no initial conditions, because it has learned the climate</label></div>
+                                        <div class="response-group-item"><input id="q07d" name="q07" value="d" type="radio"><label for="q07d"> <strong>d) </strong>It averages the last few numerical forecasts</label></div>
+                                        <input class="submit-button btn btn-primary" name="submit-button" value="Done" type="button">
+                                    </fieldset>
+                                </form>
+                                <div class="answer">
+                                    <p class="response">The correct answer is b.</p>
+                                    <p class="explanation">The model is a learned state-to-state mapping, rolled out autoregressively like a numerical model, and that is where the speed comes from — GraphCast's ten days "in under one minute" against a supercomputer integration. It still needs an analysis to start from (c is wrong), and it is not a post-processor of numerical output (d). What the feedback adds: the training record is a fact you can look up for any model, and the next page turns it into the first of the two do-not-trust conditions. GraphCast: ERA5 1979–2017. FourCastNet 3: "ERA5 data for the period 1980–2015". CREDIT's WXFormer and FuXi: six-hourly ERA5.</p>
+                                </div>
+                                <div class="message" role="alert">Please make a selection.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <p class="small">Sources on this page: Lam et al. (2023), arXiv:2212.12794v2, CC BY 4.0; Schreck et al. (2024), arXiv:2411.07814, CC BY 4.0; NVIDIA, FourCastNet 3 model card, Apache-2.0; Bonavita (2023), arXiv:2309.08473, CC BY 4.0. Figures: equations vs mapping © 2026 Glen Buchanan, CC BY 4.0; Storm Ciarán maps Charlton-Perez et al. (2024) Fig. 4, CC BY 4.0, resized, otherwise unaltered.</p>
+                
+<div class="stage_nav"><ul class="pager"><li class="previous"><a href="#page_5-0-0">&larr; Previous</a></li> <li class="next"><a href="#page_5-2-0">Next &rarr;</a></li></ul></div>
+</div>
+<div class="lesson-page" id="page_5-2-0" style="display:none">
+                    <h3 class="sub_head">Where the speed and the limits come from</h3>
+
+                    
+                    <p>The model reproduces the regressions in its training record. So its output deserves trust where that record has been shown to cover the case and the lead time in front of you, and nowhere else. The course turns that into two conditions. You will apply them in Module 3, to a real forecast you can run yourself on a GPU (an optional step).</p>
+
+                    
+                    <p><strong>Condition 1 — the case lies outside the range of the model's training data.</strong> Storm Ciarán, the 2023 European windstorm, was a natural experiment. "This is a valuable out-of-sample test for the ML-models because their training datasets all end before the beginning of 2023". The storm was "record-breaking". Four AI models were tested: FourCastNet, Pangu-Weather, GraphCast and FourCastNet-v2. All four captured the synoptic-scale structure. But "All the ML models failed to capture the intense winds – both at the surface and in the lower troposphere – associated with Ciarán". Large-scale pattern right, peak amplitude wrong, in every model, on a case at the edge of what any of them had seen. For the model you run, write down its training period. Then ask whether your case falls inside it: its date, its intensity, its climate.</p>
+
+                     
+                    <figure>
+                        <img aria-describedby="cap-24" class="img-responsive center-block" style="width:100%;height:auto" src="media/sourced/charlton-perez-2024-fig3-ciaran-timeseries.png" width="1200" height="809" alt="Four line charts of Storm Ciaran, 31 October to 2 November 2023: minimum pressure and peak wind, IFS and four AI models above, controls below.">
+                        <figcaption class="small" id="cap-24">Condition 1 in the data: Storm Ciarán, an out-of-sample case because every AI model's training set ended before 2023. In the top row the four AI models track the pressure fall (a) but all miss the peak winds (b): the IFS peaks near 34–36 m/s while the four AI models stay near 25; the bottom row shows the physics-based ensemble controls. © The Author(s) 2024. Charlton-Perez, A. J. et al., "Do AI models produce better weather forecasts than physics-based models? A quantitative evaluation case study of Storm Ciarán", npj Clim. Atmos. Sci. 7, 93 (2024), https://doi.org/10.1038/s41612-024-00638-w, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); Fig. 3, resized; otherwise unaltered apart from the credit band.</figcaption>
+                    </figure>
+
+                    
+                    
+                    
+                    <p><strong>Condition 2 — the lead time is one at which the model's skill has not been evaluated.</strong> WeatherBench 2 is "the global, medium-range (1-14 day) weather forecasting benchmark". Its metrics "are based on established practices for evaluating weather forecasts at leading operational weather centers". It scores models per lead time, per variable, against ERA5 or operational analysis. So <em>has this model been evaluated at this lead time?</em> has a lookup answer, for a model the benchmark lists. FourCastNet 3's model card claims realistic behaviour "even at extended lead times of up to 60 days". No FourCastNet of any version was on the WeatherBench 2 model table when it was read on 2026-10-19. Module 3 uses FourCastNet 3 as the case where the lookup returns nothing: WeatherBench 2 lists no FourCastNet row and this course found no independent per-lead-time scorecard, so condition 2 can be answered for it only from the developer's own claim. Absence from one benchmark is not proof that no evaluation exists. Module 3 discusses the case in its Part 5 and does not score it; the condition it scores is the one this page states — has the model's skill at this lead time been evaluated?</p>
+
+                     
+                    <figure>
+                        <img aria-describedby="cap-25" class="img-responsive center-block" style="width:100%;height:auto" src="media/graphics/two-conditions.png" width="1200" height="620" alt="A 2 by 2 grid, case inside or outside the training record by lead time evaluated or not: only inside-and-evaluated is gold; the rest hatched grey.">
+                        <figcaption class="small" id="cap-25">The two conditions for trusting an AI weather model as a 2×2: training-record coverage × evaluated lead time; gold where trust holds, hatched grey where it does not. © 2026 Glen Buchanan, CC BY 4.0.</figcaption>
+                    </figure>
+
+                    
+                    
+                    <p>Two further warning signs belong to the handbook rather than the test. One: "Increasing forecast smoothness and bias drift with forecast lead time are identified as current drawbacks of ML-based forecasts" (Ben Bouallègue et al. 2023, quoted unaltered). Two: Bonavita's finding that these models "do not have the fidelity and physical consistency of physics-based models". The same author also writes that they "appear to be already able to add value to standard NWP output for specific forecast applications" at "extremely low computational cost". The course teaches conditions for trust, not distrust.</p>
+
+                    
+                    
+                    
+                    <div class="panel panel-default interaction-question">
+                        <div class="panel-body">
+                            <div class="question-wrap checkboxes">
+                                <h4>Question 8</h4>
+                                <p id="q08-text">Under which of these conditions does this course say an AI weather model's output should <em>not</em> be trusted? (select all that apply)</p>
+                                <form action="#">
+                                    <fieldset aria-labelledby="q08-text">
+                                        <div class="response-group-item correct"><input id="q08a" name="q08" value="a" type="checkbox"><label for="q08a"> <strong>a) </strong>The case lies outside the range of the model's training data</label></div>
+                                        <div class="response-group-item correct"><input id="q08b" name="q08" value="b" type="checkbox"><label for="q08b"> <strong>b) </strong>The lead time is one at which the model's skill has not been evaluated</label></div>
+                                        <div class="response-group-item"><input id="q08c" name="q08" value="c" type="checkbox"><label for="q08c"> <strong>c) </strong>The forecast was produced on a GPU rather than a supercomputer</label></div>
+                                        <div class="response-group-item"><input id="q08d" name="q08" value="d" type="checkbox"><label for="q08d"> <strong>d) </strong>The model was trained on ERA5</label></div>
+                                        <input class="submit-button btn btn-primary" name="submit-button" value="Done" type="button">
+                                    </fieldset>
+                                </form>
+                                <div class="answer">
+                                    <p class="response">The correct answers are a and b.</p>
+                                    <p class="explanation">(c) is how these models are meant to run; (d) is how nearly all of them are trained, and is a fact you use to check condition (a), not a reason for distrust. What the feedback adds: Module 3 applies both conditions to Aurora 0.25° Fine-Tuned, the model you will run — because it <em>is</em> on the WeatherBench 2 table, which makes condition (b) checkable, and its training ranges are published, which makes condition (a) checkable. Checking has three parts: the checkpoint scored is the one you ran, the initial conditions match (the table's Aurora row scores runs from operational IFS initial conditions), and the lead time you want is inside the range scored.</p>
+                                </div>
+                                <div class="message" role="alert">Please make a selection.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="show-after">
+                        <p><strong>Revealed after you answer:</strong> a question NSF NCAR's own bootcamp asks in its last lecture — "Is machine learning appropriate for your science question?" — is the question Section 2 of this module asked, and you now have the tools to answer it: the closed-form rule, the three framing questions, the spine with its eight failures, and the two conditions for trusting a learned model. The summary page gathers them.</p>
+                    </div>
+
+                    
+                    <p class="small">Sources on this page: Charlton-Perez et al. (2023), arXiv:2312.02658, CC BY 4.0; Rasp et al. (2023), arXiv:2308.15560, CC BY 4.0; the WeatherBench 2 model table, read 2026-10-19; NVIDIA, FourCastNet 3 model card, Apache-2.0; Ben Bouallègue et al. (2023), arXiv:2307.10128v2, CC BY-SA 4.0, quoted unaltered; Bonavita (2023), arXiv:2309.08473, CC BY 4.0; NSF NCAR EdEC bootcamp slides (© UCAR, brief excerpt). Figures: Storm Ciarán time series Charlton-Perez et al. (2024) Fig. 3, CC BY 4.0, resized, otherwise unaltered; two conditions © 2026 Glen Buchanan, CC BY 4.0.</p>
+                
+<div class="stage_nav"><ul class="pager"><li class="previous"><a href="#page_5-1-0">&larr; Previous</a></li> <li class="next"><a href="#page_6-0-0">Next &rarr;</a></li></ul></div>
+</div>
+<div class="lesson-page" id="page_6-0-0" style="display:none">
+                    <h3 class="sub_head">Summary and what comes next</h3>
+
+                    
+                    <p><strong>What machine learning is (O1).</strong> A model is a mathematical relationship derived from data and judged by its predictions. Sort any proposal by its goal — a number, a category, a grouping, new content — and by whether the data carry the answers. If a known relation already gives the target exactly, it is not a machine-learning problem; compute it. Then ask Unidata's three questions: does a simpler solution exist, can the requirements be met, and which scientific question — one somebody will act on — is being answered.</p>
+
+                    
+                    <p><strong>The spine (O2).</strong> Frame, data, split, train, validate, refine, test, justify. Each step prevents one failure, and most of those failures raise the score while they ruin the result. On a large ensemble the split is by member — grouped by initialization cluster or with the window started after the initial-condition memory has faded — never by year.</p>
+
+                     
+                    <figure>
+                        <img aria-describedby="cap-26" class="img-responsive center-block" style="width:100%;height:auto" src="media/graphics/course-map.png" width="1200" height="480" alt="Course map as three cards: Module 1 Foundations in gold, Module 2 Applications, Module 3 Analysis; pretest before, quiz after. The card text follows.">
+                        <figcaption class="small" id="cap-26">The course map: three modules, five objectives, pretest and quiz; gold on Module 1. © 2026 Glen Buchanan, CC BY 4.0.</figcaption>
+                    </figure>
+                     
+                    <ul>
+                        <li><strong>Module 1 · Foundations</strong> — no code, about one hour: O1 appropriate problems; O2 the spine and its failures; O5 AI weather models, two conditions.</li>
+                        <li><strong>Module 2 · Applications</strong> — notebook, handbook, rubric: O3 build and validate a classifier on CESM2 LENS (split by member, precision and recall, paired trials).</li>
+                        <li><strong>Module 3 · Analysis</strong> — notebook, one GPU step: O4 a small neural network with one attribution per prediction; one AI weather model run in inference.</li>
+                        <li>Pretest before Module 1; quiz after Module 3, the pretest's twin, item for item.</li>
+                    </ul>
+
+                    
+                    
+                    
+                    
+                    
+                    <p><strong>ML at NSF NCAR today.</strong> Six published focus areas; CREDIT as the house AI weather-model framework; Derecho's 328 A100 GPUs (40 GB each) and Casper's 80 GB A100/H100 machine-learning nodes, both named in the HPC documentation for AI/ML work; CESM2 LENS as NSF NCAR data that published ML work trains on, open on AWS under CC BY 4.0 with a required citation; and a bootcamp that teaches the house's topics with stated goals but no measurable per-lecture objectives, and no assessment shown in its published curriculum — the gap this course fills.</p>
+
+                    
+                    
+                    <p><strong>AI weather models (O5).</strong> A learned mapping from analysis to analysis, rolled out step by step, trained on a reanalysis: fast because it integrates nothing, limited because it reproduces only the regressions its training record contains. Do not trust its output when the case lies outside the range of its training data, or when the lead time is one at which the model's skill has not been evaluated.</p>
+
+                    
+                    <h4>What comes next</h4>
+                    
+                    <p>The <em>Run the notebooks</em> section of the course README gets you a conda environment and the CESM2 LENS catalogue, read straight from the AWS copy. <strong>Module 2</strong> walks the spine on the ensemble: does the autumn ENSO state predict a wet Front Range winter? — logistic regression, a tree and gradient boosting, a confusion matrix with precision and recall, refinement trials compared honestly, and a justification you write in the handbook. <strong>Module 3</strong> trains a small neural network on the same task, reads one attribution per prediction, and runs one pre-trained AI weather model in inference for one case (optional, on a GPU), applying the two conditions you just learned. The quiz that follows is the twin of the pretest, item for item.</p>
+
+                     
+                    <figure>
+                        <img aria-describedby="cap-27" class="img-responsive center-block" style="width:100%;height:auto" src="media/sourced/bmng-closing-earth.jpg" width="1200" height="600" alt="Satellite composite of Earth, Blue Marble: Next Generation, August 2004, cropped to the Americas, the Atlantic, Europe and Africa, with bathymetry.">
+                        <figcaption class="small" id="cap-27">The system the course's data come from, and the one every model here is judged against. NASA Earth Observatory — Blue Marble: Next Generation, August 2004 (Reto Stöckli, NASA GSFC), cropped. Public domain.</figcaption>
+                    </figure>
+
+                    
+                    <p class="small">Sources on this page: as cited on the pages above. Figures: course map © 2026 Glen Buchanan, CC BY 4.0; closing Earth NASA Earth Observatory, Blue Marble: Next Generation (Reto Stöckli, NASA GSFC), public domain, cropped.</p>
+                
+<div class="stage_nav"><ul class="pager"><li class="previous"><a href="#page_5-2-0">&larr; Previous</a></li> <li class="next"><a href="#page_contributors">Next &rarr;</a></li></ul></div>
+</div>
+<div class="lesson-page" id="page_contributors" style="display:none">
+                    <h3 class="sub_head">Contributors</h3>
+
+                    
+                    <h4>Author</h4>
+                    
+                    <ul>
+                        <li>Glen Buchanan — independent; self-funded.</li> 
+                    </ul>
+                    <h4>Scientific advisors / reviewers</h4>
+                    
+                    <ul>
+                        <li>None yet. This lesson has not been reviewed by NSF NCAR, UCAR, COMET or NSF Unidata, and nothing in it should be read as their view.</li>
+                    </ul>
+                    <h4>Instructional design, graphics and authoring</h4>
+                    
+                    <ul>
+                        <li>Glen Buchanan, with an AI drafting engine — Anthropic's Claude, run through an automated drafting and checking process — that drafted every paragraph and every knowledge check from licence-checked sources, credited where they are used. Every quotation is checked by script, word for word, against its source; paraphrase is not machine-checked. Drafted with AI assistance (Anthropic's Claude) from cited sources, under the author's direction; the author's line-by-line edit and a subject-matter review are still to come.</li>
+                    </ul>
+                    <h4>Funding</h4>
+                    
+                    <p>Self-funded. No NSF NCAR sponsorship, funding or review. Learner performance on the pretest and quiz is reported only from simulated cohorts and labelled as such.</p>
+                    <h4>Template and licences</h4>
+                    
+                    <p>The page structure, stylesheets, scripts and question-snippet markup are the <em>latest_core</em> (absorb-2025) template of UCAR/COMET's InternalTools_generator-metedlesson v3.0.1, Copyright 2025 UCAR/COMET – Gary Pacheco, licensed under the Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0). That licence covers the template code only; it grants no rights in UCAR's or COMET's names or marks, and the template's use here implies no UCAR, COMET or NSF NCAR authorship, sponsorship or endorsement.</p>
+                    
+                    
+                    <p>The lesson's text and its sixteen diagrams are © 2026 Glen Buchanan and are licensed under Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/). The cover and the top banner are crops of NASA's <em>Blue Marble: Next Generation</em> (NASA Earth Observatory; Reto Stöckli, NASA GSFC), a public-domain US-government work; only the lesson's crop, darkening and credit line are CC BY 4.0, and the credit burned into the cover is the one on the splash page. Twelve third-party images on the lesson pages are under their own terms and are not part of the CC BY grant: NASA Scientific Visualization Studio, NASA Earth Observatory and NOAA/NWS images are public domain; the figures from Rodgers et al. (2021) and Charlton-Perez et al. (2024) are CC BY 4.0 with the changes noted on each; three images courtesy of UCAR (the Cheyenne precipitation simulation, the Derecho cabinet and the CREDIT dashboard) are for non-commercial, educational use under UCAR's media terms (https://www.ucar.edu/terms-of-use/media). Every item's credit and licence is on the Media page. Quoted passages remain under their own licences, named where they appear: Google Machine Learning Crash Course (CC BY 4.0); NSF Unidata, <em>Supervised Machine Learning Readiness</em> (Apache-2.0); MetPy (BSD-3-Clause); scikit-learn (BSD-3-Clause); Rodgers et al. 2021 (CC BY 4.0); Mamalakis et al. 2022, Lam et al. 2023, Schreck et al. 2024, Bonavita 2023, Charlton-Perez et al. 2023, Rasp et al. 2023 (arXiv copies, CC BY 4.0); Ben Bouallègue et al. 2023 (arXiv v2, CC BY-SA 4.0, quoted unaltered); NSF NCAR HPC Documentation, "Derecho" and "Casper" (CC BY-SA 4.0, quoted unaltered); NCAR/InferStudio README (no licence published; one brief excerpt, cited); NCAR/miles-credit README and NVIDIA's FourCastNet 3 model card (Apache-2.0); the Registry of Open Data on AWS entry (Apache-2.0). Pages on ucar.edu sites (the AI Program, EdEC, Unidata's catalogue page, the CESM2 Large Ensemble project page) are cited and paraphrased, with brief excerpts where quoted, under the UCAR website Terms of Use and are not reproduced. The full media register, with a credit and licence per item, is in the course repository.</p>
+                
+<div class="stage_nav"><ul class="pager"><li class="previous"><a href="#page_6-0-0">&larr; Previous</a></li> <li class="inactive-next"></li></ul></div>
+</div>
+            </section>
+    </div>
+
+        
+        <footer id="lesson-footer" class="row">
+            <div class="col-md-8">
+            
+                <p id="lesson-copyright">&copy; 2026 Glen Buchanan · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">CC BY 4.0</a> (third-party images keep their own terms) · Not endorsed by NSF NCAR · <a href="media_gallery.htm" style="text-decoration:underline">Credits and licences</a> · <a href="https://github.com/glenbuchanan/ncar-ml-readiness-course" target="_blank" style="text-decoration:underline">Source on GitHub</a></p>
+            
+            </div>
+            <div class="col-md-4">
+            
+                <ul id="parent-links"><li><a href="contributors.htm">Contributors</a></li></ul>
+            
+            </div>
+        </footer>
+    </main>
+
+    
+    <div id="quiz-prompt"></div>
+<script src="../scorm/bridge.js"></script>
+</body>
+</html>

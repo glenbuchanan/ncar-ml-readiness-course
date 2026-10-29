@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this course, please cite it as below."
+type: software
+title: "Machine Learning Readiness for NSF NCAR Staff"
+abstract: "An open-source introduction to machine learning for scientists and engineers new to it, built on the CESM2 Large Ensemble: a no-code lesson (also packaged as SCORM 1.2), two Jupyter notebooks with a handbook and rubric, and a pretest, quiz and boosters aligned to five objectives. Drafted with AI assistance from cited sources, under the author's direction; awaiting the author's line-by-line edit and a subject-matter review."
+authors:
+  - family-names: Buchanan
+    given-names: Glen
+    website: https://github.com/glenbuchanan
+license:
+  - CC-BY-4.0
+  - Apache-2.0
+repository-code: "https://github.com/glenbuchanan/ncar-ml-readiness-course"
+url: "https://glenbuchanan.github.io/ncar-ml-readiness-course/"
+keywords:
+  - machine learning
+  - Earth system science
+  - CESM2 Large Ensemble
+  - training
+  - SCORM

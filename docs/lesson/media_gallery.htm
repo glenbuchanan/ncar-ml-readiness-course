@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Machine Learning Readiness for NSF NCAR Staff — Module 1: Foundations</title>
+    <meta name="author" content="Glen Buchanan">
+    <meta name="copyright" content="Glen Buchanan, CC BY 4.0">
+    <meta name="robots" content="all">
+    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/meted-base.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/module-absorb.css">
+    <script src="jquery/jquery.min.js"></script>
+    <script src="jquery/jquery-ui.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="jquery/apps/fancybox/fancybox.min.css">
+    <script src="jquery/apps/fancybox/fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="print" href="css/module-print.css">
+    <script src="jquery/defaults.js"></script>
+
+    <style>
+    @media (max-width:767px){.media-description-text p{height:auto;overflow:visible}}
+    
+    @media (max-width:767px){#lesson-sidebar-title{font-size:30px}}
+    #lesson-sidebar-unit-title{margin-top:10px}</style>
+    <script>
+    var printVersion = true;
+    $(document).ready(function() {
+        var a11y = {
+            afterShow: function () {
+                var wrap = this.wrap, trigger = $(this.element);
+                var name = trigger.find('img').attr('alt') || trigger.attr('title') || 'Image';
+                wrap.attr({ role: 'dialog', 'aria-modal': 'true', 'aria-label': name, tabindex: '-1' });
+                wrap.find('.fancybox-image').attr('alt', name);
+                wrap.find('.fancybox-close').attr('aria-label', 'Close');
+                wrap.find('.fancybox-nav').each(function () {
+                    $(this).attr('aria-label', $(this).attr('title') || ($(this).hasClass('fancybox-next') ? 'Next' : 'Previous'));
+                });
+                wrap.off('keydown.mlTrap').on('keydown.mlTrap', function (e) {
+                    if ((e.which || e.keyCode) !== 9) return;
+                    var stops = wrap.find('a[href], button, input, select, textarea, [tabindex]').filter(':visible').not('[tabindex="-1"]');
+                    var active = document.activeElement;
+                    if (!stops.length) { e.preventDefault(); wrap.focus(); return; }
+                    var first = stops[0], last = stops[stops.length - 1];
+                    if (e.shiftKey) {
+                        if (active === first || active === wrap[0] || !wrap[0].contains(active)) { e.preventDefault(); last.focus(); }
+                    } else if (active === last || active === wrap[0] || !wrap[0].contains(active)) { e.preventDefault(); first.focus(); }
+                });
+                wrap.focus();
+            },
+            afterClose: function () { $(this.element).focus(); }
+        };
+        $("a[href$='.jpg'],a[href$='.png'],a[href$='.gif']").attr('rel', 'gallery').fancybox($.extend({
+            helpers: {
+                title: { type: 'inside'},
+                buttons: {}
+            }
+        }, a11y));
+        $(".media-thumbnail > a[href$='.htm'], .media-thumbnail > a[href$='.html'], a[href$='.mp4']").attr(
+            'rel', 'gallery-anim').fancybox($.extend({
+            type: 'iframe',
+            helpers: {
+                title: {type: 'inside'},
+                buttons: {}
+            }
+        }, a11y));
+    });
+    </script>
+
+
+
+</head>
+<body>
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.htm">Home</a></li>
+                <li><a href="lesson.htm">Lesson</a></li>
+                <li class="active"><a href="media_gallery.htm">Gallery</a></li>
+                <li><a href="contributors.htm">Contributors</a></li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<main id="master-container" class="container">
+	<div class="row">
+        <div id="lesson-content" class="col-sm-12">
+            <h1 id="lesson-sidebar-title" class="module-title-text">Machine Learning Readiness for NSF NCAR Staff — Module 1: Foundations</h1>
+            
+            <div id="menu" class="sidebar-toc">
+                <h2 id="lesson-sidebar-unit-title">Media Gallery</h2>
+            </div>
+            <hr>
+
+            <p>Every item in this lesson is listed here with its credit and its terms. The lesson&#39;s own diagrams are &copy; 2026 Glen Buchanan and released under Creative Commons Attribution 4.0 International. Third-party images are under their own terms and are not part of that grant: NASA and NOAA/NWS images are public domain; figures from Rodgers et al. (2021) and Charlton-Perez et al. (2024) are CC BY 4.0; three images courtesy of UCAR are for non-commercial, educational use under <a href="https://www.ucar.edu/terms-of-use/media" target="_blank" style="text-decoration:underline">UCAR&#39;s media terms</a> (credits on each figure and on this page). The cover and the top banner are crops of NASA&#39;s public-domain Blue Marble: Next Generation; only the crop, darkening and credit line are the lesson&#39;s. The "copyright terms" link on each item gives the licence; the credit line is the one to reproduce. None of the figures is made from CESM2 LENS data, so no dataset citation applies to them; the citation line the UCAR Data Terms of Use require will appear under every LENS-derived figure in Modules 2 and 3.</p>
+
+    <div class="gallery-container row">
+
+        <div id="a1" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/graphics/ml-by-goals.png" target="_blank"><img src="media/graphics/ml-by-goals.png" alt="Machine learning sorted by what the model is for: regression, classification, clustering, generative; the first two marked supervised" height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>Four kinds of goal — predict a number, predict a category, find groupings, produce new content — with the supervised pair marked. Used on page 2-1-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>ml-by-goals.png (1200 × 600)</p>
+                    <p><strong>Credits:</strong><br>&copy; 2026 Glen Buchanan</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">Creative Commons BY 4.0 International</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a2" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/graphics/closed-form-rule.png" target="_blank"><img src="media/graphics/closed-form-rule.png" alt="The closed-form rule: a known relation gives the target exactly, so compute it; otherwise a candidate for supervised ML" height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>The closed-form rule as the sharp case of "does a simpler solution exist?". Used on page 2-2-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>closed-form-rule.png (1200 × 600)</p>
+                    <p><strong>Credits:</strong><br>&copy; 2026 Glen Buchanan</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">Creative Commons BY 4.0 International</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a3" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/graphics/analysis-spine.png" target="_blank"><img src="media/graphics/analysis-spine.png" alt="The eight-step analysis spine with the failure each step guards against" height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>Frame, data, split, train, validate, refine, test, justify — and the named failure each step prevents. Used on page 3-1-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>analysis-spine.png (1200 × 700)</p>
+                    <p><strong>Credits:</strong><br>&copy; 2026 Glen Buchanan</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">Creative Commons BY 4.0 International</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a4" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/graphics/split-by-member.png" target="_blank"><img src="media/graphics/split-by-member.png" alt="Splitting a large ensemble by year leaks; splitting by member gives an unseen test set" height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>Members by years: a split by year puts every member on both sides; a split by member holds whole members out. Used on page 3-2-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>split-by-member.png (1200 × 600)</p>
+                    <p><strong>Credits:</strong><br>&copy; 2026 Glen Buchanan</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">Creative Commons BY 4.0 International</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a5" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/graphics/ncar-ai-program-map.png" target="_blank"><img src="media/graphics/ncar-ai-program-map.png" alt="The NSF NCAR AI Program's six focus areas as published, with this lesson's placements of CREDIT, CESM2 LENS, trust checks and the lesson itself" height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>The six focus areas by their published names (ncarprojects.ucar.edu/ai, read 2026-10-19); placements are this lesson's reading. Used on page 4-1-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>ncar-ai-program-map.png (1200 × 650)</p>
+                    <p><strong>Credits:</strong><br>&copy; 2026 Glen Buchanan</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">Creative Commons BY 4.0 International</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a6" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/graphics/nwp-vs-ai-model.png" target="_blank"><img src="media/graphics/nwp-vs-ai-model.png" alt="Numerical model integrating the equations versus an AI weather model applying a learned mapping, both rolled out from an analysis" height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>Two ways from an analysis to a forecast: integrate the equations, or apply a learned mapping and feed the output back in. Used on page 5-1-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>nwp-vs-ai-model.png (1200 × 650)</p>
+                    <p><strong>Credits:</strong><br>&copy; 2026 Glen Buchanan</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">Creative Commons BY 4.0 International</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a7" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="assets/module-cover.jpg" target="_blank"><img src="assets/module-cover.jpg" alt="Lesson cover: NASA's Blue Marble: Next Generation view of the Atlantic between the Americas and Europe and Africa, darkened at the top and foot, with the image credit and the lesson credit in small white type at the lower right." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>Lesson cover: the Blue Marble: Next Generation, Atlantic-centred and darkened under the splash text. Used on index.htm.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>module-cover.jpg (1280 × 755)</p>
+                    <p><strong>Credits:</strong><br>Image: NASA Earth Observatory (Blue Marble: Next Generation; Reto Stöckli, NASA GSFC), public domain. Lesson &copy; 2026 Glen Buchanan, CC BY 4.0</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://science.nasa.gov/earth/earth-observatory/blue-marble-next-generation/" target="_blank" style="text-decoration:underline">Public domain (NASA)</a>; lesson <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">CC BY 4.0</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a8" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/graphics/ml-derived-from-data.png" target="_blank"><img src="media/graphics/ml-derived-from-data.png" alt="Flow diagram: training examples with answers lead to the model, a fitted curve, then applied to unseen cases and its predictions scored." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>The Crash Course definition as one flow: training examples, the model, predictions scored on unseen cases; gold for the judgement. Used on page 2-0-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>ml-derived-from-data.png (1200 × 560)</p>
+                    <p><strong>Credits:</strong><br>© 2026 Glen Buchanan</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">CC BY 4.0</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a9" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/graphics/three-framing-questions.png" target="_blank"><img src="media/graphics/three-framing-questions.png" alt="Three stacked cards, Unidata&#x27;s framing questions 1 to 3, each with what it protects you from; the third is gold because it feeds step 1 of the spine." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>Unidata&#x27;s three framing questions as stacked cards with what each protects against; gold on the third. Used on page 2-3-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>three-framing-questions.png (1200 × 640)</p>
+                    <p><strong>Credits:</strong><br>© 2026 Glen Buchanan</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">CC BY 4.0</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a10" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/graphics/spine-rail.png" target="_blank"><img src="media/graphics/spine-rail.png" alt="Eight nodes on a rail, Frame to Justify, shaded along a gold ramp and grouped as problem framing, data handling and model development." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>The eight-word spine as a rail with the gold ramp along it — the compressed form of Unidata&#x27;s section headings. Used on page 3-0-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>spine-rail.png (1200 × 420)</p>
+                    <p><strong>Credits:</strong><br>© 2026 Glen Buchanan</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">CC BY 4.0</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a11" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/graphics/eight-failures.png" target="_blank"><img src="media/graphics/eight-failures.png" alt="Eight cards, one per spine step, naming its failure; Split, Validate and Test carry a gold badge (score up, result ruined), the rest grey." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>The eight failures as a card set, marking the three that look like success from the inside; the second visual on page 3-1-0. Used on page 3-1-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>eight-failures.png (1200 × 700)</p>
+                    <p><strong>Credits:</strong><br>© 2026 Glen Buchanan</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">CC BY 4.0</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a12" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/graphics/three-things-today.png" target="_blank"><img src="media/graphics/three-things-today.png" alt="Three cards, CREDIT, Derecho&#x27;s GPUs and CESM2 LENS on AWS, each with what it needs; the LENS card is gold, usable today. Card text follows." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>CREDIT, Derecho&#x27;s GPUs and CESM2 LENS on AWS as a card row with what each needs; gold on the one usable today. Used on page 4-2-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>three-things-today.png (1200 × 520)</p>
+                    <p><strong>Credits:</strong><br>© 2026 Glen Buchanan</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">CC BY 4.0</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a13" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/graphics/bootcamp-curriculum.png" target="_blank"><img src="media/graphics/bootcamp-curriculum.png" alt="Six numbered cards, one per bootcamp lecture, the sixth (CAMulator, Ask an AI expert) in gold; the six titles are listed in this page&#x27;s text." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>The six-lecture bootcamp curriculum as numbered cards, gold on the lecture that asks whether machine learning is appropriate for your science question; titles from the EdEC slides (© UCAR). Used on page 4-3-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>bootcamp-curriculum.png (1200 × 600)</p>
+                    <p><strong>Credits:</strong><br>© 2026 Glen Buchanan</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">CC BY 4.0</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a14" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/graphics/two-conditions.png" target="_blank"><img src="media/graphics/two-conditions.png" alt="A 2 by 2 grid, case inside or outside the training record by lead time evaluated or not: only inside-and-evaluated is gold; the rest hatched grey." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>The two conditions for trusting an AI weather model as a 2×2; gold where trust holds, hatched grey where it does not. Used on page 5-2-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>two-conditions.png (1200 × 620)</p>
+                    <p><strong>Credits:</strong><br>© 2026 Glen Buchanan</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">CC BY 4.0</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a15" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/graphics/course-map.png" target="_blank"><img src="media/graphics/course-map.png" alt="Course map as three cards: Module 1 Foundations in gold, Module 2 Applications, Module 3 Analysis; pretest before, quiz after. The card text follows." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>The course map: three modules, five objectives, pretest and quiz; gold on Module 1. Used on page 1-0-0, page 6-0-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>course-map.png (1200 × 480)</p>
+                    <p><strong>Credits:</strong><br>© 2026 Glen Buchanan</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">CC BY 4.0</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a28" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/graphics/ml-at-ncar-four-things.png" target="_blank"><img src="media/graphics/ml-at-ncar-four-things.png" alt="Four cards in a row, read left to right, for the four things NSF NCAR does that this section maps: a published AI programme (Artificial Intelligence for Earth System Science), its own AI weather-model framework (CREDIT, which trains and deploys AI atmospheric prediction models), GPU systems its documentation names for AI/ML jobs (Derecho and Casper), and, in gold, the data this course uses (CESM2 LENS); the three described-only cards have grey hatched headers; a footer says the map carries a date and that the lesson is independent of NSF NCAR." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>Four cards for the four things page 4-0-0 maps — a published AI programme, its own AI weather-model framework, GPU systems named for AI/ML jobs, and the data this course uses (gold). Used on page 4-0-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>ml-at-ncar-four-things.png (1200 × 600)</p>
+                    <p><strong>Credits:</strong><br>© 2026 Glen Buchanan</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">CC BY 4.0</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a29" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/graphics/ai-weather-two-sides.png" target="_blank"><img src="media/graphics/ai-weather-two-sides.png" alt="A gold coin in the middle labelled the one fact — a mapping learned from decades of past analyses, applied to today&#x27;s analysis — with arrows out to two cards: on the left, gold and solid, side 1, what an AI weather model does differently (trained on a reanalysis, run by inference from an analysis, so forecasts at much lower computational cost in minutes, not hours); on the right, grey, dashed and hatched, side 2, two conditions under which its output should not be trusted, named two pages on." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>Objective O5 as a coin: one learned mapping in the middle; side 1, what an AI weather model does differently; side 2, when not to trust its output. Used on page 5-0-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>ai-weather-two-sides.png (1200 × 600)</p>
+                    <p><strong>Credits:</strong><br>© 2026 Glen Buchanan</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">CC BY 4.0</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a16" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/sourced/svs5669-aerosols-2025-08-19.jpg" target="_blank"><img src="media/sourced/svs5669-aerosols-2025-08-19.jpg" alt="GEOS model map, 19 August 2025: sea-salt aerosol around Hurricane Erin, Saharan dust over the Atlantic, wildfire smoke over North America and Africa." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>GEOS aerosols, 19 Aug 2025: Hurricane Erin, Saharan dust and wildfire smoke in one model field. Used on page 1-0-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>svs5669-aerosols-2025-08-19.jpg (1200 × 675)</p>
+                    <p><strong>Credits:</strong><br>NASA&#x27;s Scientific Visualization Studio; NASA Global Modeling and Assimilation Office (GMAO). Visualizations by Joseph V. Ardizzone and Helen-Nicole Kostis</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://svs.gsfc.nasa.gov/help/" target="_blank" style="text-decoration:underline">public domain (NASA SVS)</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a17" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/sourced/svs5603-gistemp-2025.jpg" target="_blank"><img src="media/sourced/svs5603-gistemp-2025.jpg" alt="World map of the 2025 GISTEMP v4 temperature anomaly: oranges and browns over nearly all land and ocean, darkest in the Arctic; colour bar in °F/°C." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>Global surface temperature anomalies for 2025 (GISTEMP v4), Robinson projection. Used on page 2-1-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>svs5603-gistemp-2025.jpg (1200 × 708)</p>
+                    <p><strong>Credits:</strong><br>NASA&#x27;s Scientific Visualization Studio. Data provided by Robert B. Schmunk (NASA/GSFC GISS). Visualizer Mark SubbaRao</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://svs.gsfc.nasa.gov/help/" target="_blank" style="text-decoration:underline">public domain (NASA SVS)</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a18" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/sourced/nws-radiosonde-dual-release.jpg" target="_blank"><img src="media/sourced/nws-radiosonde-dual-release.jpg" alt="Two NWS technicians on a grassy field release radiosondes: one balloon in frame above its technician, the other already risen out of frame; blue sky." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>A radiosonde dual release at the NWS Sterling Field Support Center. Used on page 2-2-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>nws-radiosonde-dual-release.jpg (1200 × 900)</p>
+                    <p><strong>Credits:</strong><br>NOAA/National Weather Service</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://www.weather.gov/disclaimer" target="_blank" style="text-decoration:underline">public domain (NOAA/National Weather Service)</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a19" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/sourced/svs4278-gpm-snowstorm-2015-02-17.jpg" target="_blank"><img src="media/sourced/svs4278-gpm-snowstorm-2015-02-17.jpg" alt="GPM satellite 3-D view of a 17 February 2015 storm over the eastern United States: a curtain of precipitation rates, rain south, snow north." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>GPM observes a snow storm over Kentucky, West Virginia and North Carolina, 17 February 2015. Used on page 2-3-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>svs4278-gpm-snowstorm-2015-02-17.jpg (1200 × 675)</p>
+                    <p><strong>Credits:</strong><br>NASA&#x27;s Scientific Visualization Studio. Data provided by the joint NASA/JAXA GPM mission. Visualizations by Kel Elkins (USRA)</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://svs.gsfc.nasa.gov/help/" target="_blank" style="text-decoration:underline">public domain (NASA SVS)</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a20" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/sourced/rodgers2021-fig1-ensemble-1850-2100.png" target="_blank"><img src="media/sourced/rodgers2021-fig1-ensemble-1850-2100.png" alt="Time series 1850 to 2100 of top-of-atmosphere radiation flux anomaly: ensemble mean in black, grey spread across 100 members, red observations." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>Rodgers et al. 2021, Fig. 1 panel (a), cropped, resized, neighbouring marks masked: top-of-atmosphere radiation flux, 1850–2100, 100 members. Page 3-2-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>rodgers2021-fig1-ensemble-1850-2100.png (1200 × 534)</p>
+                    <p><strong>Credits:</strong><br>© Author(s) 2021. Rodgers, K. B. et al., "Ubiquity of human-induced changes in climate variability", Earth Syst. Dynam. 12, 1393–1411 (2021), https://doi.org/10.5194/esd-12-1393-2021, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); Fig. 1 panel (a), cropped and resized, the neighbouring panels' overlapping marks masked</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">CC BY 4.0</a> — cropped and resized, the neighbouring panels' overlapping marks masked; otherwise unaltered</p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a21" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/sourced/ucar-cheyenne-precipitation-simulation.jpg" target="_blank"><img src="media/sourced/ucar-cheyenne-precipitation-simulation.jpg" alt="A single wide global map, one frame from a precipitation simulation run on the Cheyenne supercomputer: the oceans a pale blue texture, a band of heavy accumulated rainfall in purple along the tropics and across the western Pacific and South Asia, smaller purple and amber patches over the storm tracks, and the continents in white and grey with black coastlines." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>One frame from a global precipitation simulation run on Cheyenne, May–November 2015: heavy rainfall in purple along the tropics. Used on page 4-0-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>ucar-cheyenne-precipitation-simulation.jpg (1200 × 513)</p>
+                    <p><strong>Credits:</strong><br>Visualization by NCAR Computational and Information Systems Laboratory, based on research led by Benjamin A. Cash, George Mason University. Courtesy of UCAR.</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://www.ucar.edu/terms-of-use/media" target="_blank" style="text-decoration:underline">UCAR media terms of use — non-commercial, educational and research use; courtesy of UCAR (third-party, outside the lesson&#x27;s CC BY grant)</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a22" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/sourced/ucar-derecho-cabinet.jpg" target="_blank"><img src="media/sourced/ucar-derecho-cabinet.jpg" alt="A systems engineer gestures beside an open Derecho cabinet, blades and red and blue cooling hoses exposed, as a visitor watches, at the NWSC." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>Jared Baker (NWSC) with a Derecho cabinet — photo from NSF NCAR &amp; UCAR News, 21 Aug 2023; the photo&#x27;s own date is not stated. Used on page 4-2-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>ucar-derecho-cabinet.jpg (1200 × 860)</p>
+                    <p><strong>Credits:</strong><br>Courtesy of UCAR</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://www.ucar.edu/terms-of-use/media" target="_blank" style="text-decoration:underline">UCAR media terms of use — non-commercial, educational and research use; courtesy of UCAR (third-party, outside the lesson&#x27;s CC BY grant)</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a23" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/sourced/ucar-credit-camulator-dashboard.png" target="_blank"><img src="media/sourced/ucar-credit-camulator-dashboard.png" alt="Dashboard screenshot, Gen2 Forecast vs Truth: a global map of forecast west-east wind, a difference map, a vertical slice and a time series." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>An interactive viewer of CREDIT output: CAMulator&#x27;s west–east wind forecast, the truth and their difference. Used on page 4-2-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>ucar-credit-camulator-dashboard.png (1200 × 658)</p>
+                    <p><strong>Credits:</strong><br>Courtesy of UCAR</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://www.ucar.edu/terms-of-use/media" target="_blank" style="text-decoration:underline">UCAR media terms of use — non-commercial, educational and research use; courtesy of UCAR (third-party, outside the lesson&#x27;s CC BY grant)</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a24" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/sourced/svs5158-idalia-franklin-winds.jpg" target="_blank"><img src="media/sourced/svs5158-idalia-franklin-winds.jpg" alt="GEOS model wind streaks curl into two tight spirals over the Gulf of Mexico and the western Atlantic: Hurricanes Idalia and Franklin, August 2023." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>Hurricanes Idalia and Franklin: wind flows from the GEOS model as particle traces, August 2023. Used on page 5-0-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>svs5158-idalia-franklin-winds.jpg (1200 × 708)</p>
+                    <p><strong>Credits:</strong><br>NASA&#x27;s Scientific Visualization Studio. Visualizations by Greg Shirah (NASA/GSFC)</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://svs.gsfc.nasa.gov/help/" target="_blank" style="text-decoration:underline">public domain (NASA SVS)</a></p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a25" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/sourced/charlton-perez-2024-fig4-ciaran-maps.png" target="_blank"><img src="media/sourced/charlton-perez-2024-fig4-ciaran-maps.png" alt="Six map panels of Storm Ciaran, 00 UTC 2 November 2023 (ERA5, IFS HRES and four AI models): 10-metre wind speed in colour with pressure contours." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>Charlton-Perez et al. 2024, Fig. 4: wind and pressure of Storm Ciarán, 00 UTC 2 November 2023 — ERA5, IFS HRES and four ML models. Used on page 5-1-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>charlton-perez-2024-fig4-ciaran-maps.png (1200 × 703)</p>
+                    <p><strong>Credits:</strong><br>© The Author(s) 2024. Charlton-Perez, A. J. et al., "Do AI models produce better weather forecasts than physics-based models? A quantitative evaluation case study of Storm Ciarán", npj Clim. Atmos. Sci. 7, 93 (2024), https://doi.org/10.1038/s41612-024-00638-w, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); Fig. 4, resized</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">CC BY 4.0</a> — resized; otherwise unaltered apart from the credit band</p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a26" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/sourced/charlton-perez-2024-fig3-ciaran-timeseries.png" target="_blank"><img src="media/sourced/charlton-perez-2024-fig3-ciaran-timeseries.png" alt="Four line charts of Storm Ciaran, 31 October to 2 November 2023: minimum pressure and peak wind, IFS and four AI models above, controls below." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>Charlton-Perez et al. 2024, Fig. 3: pressure and peak wind of Storm Ciarán, 31 October to 2 November 2023, physics and four ML models. Page 5-2-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>charlton-perez-2024-fig3-ciaran-timeseries.png (1200 × 809)</p>
+                    <p><strong>Credits:</strong><br>© The Author(s) 2024. Charlton-Perez, A. J. et al., "Do AI models produce better weather forecasts than physics-based models? A quantitative evaluation case study of Storm Ciarán", npj Clim. Atmos. Sci. 7, 93 (2024), https://doi.org/10.1038/s41612-024-00638-w, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); Fig. 3, resized</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">CC BY 4.0</a> — resized; otherwise unaltered apart from the credit band</p>
+                </section>
+            </article>
+        </div>
+
+        <div id="a27" class="col-md-4 col-xs-6 gallery-item">
+            <article class="panel panel-default">
+                <section class="media-thumbnail">
+                    <a href="media/sourced/bmng-closing-earth.jpg" target="_blank"><img src="media/sourced/bmng-closing-earth.jpg" alt="Satellite composite of Earth, Blue Marble: Next Generation, August 2004, cropped to the Americas, the Atlantic, Europe and Africa, with bathymetry." height="130" class="center-block" style="max-width:100%;object-fit:contain"></a>
+                </section>
+                <section class="media-description">
+                    <div class="media-description-text"><p><strong>Description:</strong><br>Blue Marble: Next Generation, August 2004, with topography and bathymetry — the Americas, the Atlantic, Europe and Africa. Used on page 6-0-0.</p></div>
+                    <p class="media-filename"><strong>File Name:</strong><br>bmng-closing-earth.jpg (1200 × 600)</p>
+                    <p><strong>Credits:</strong><br>NASA Earth Observatory (Blue Marble: Next Generation; Reto Stöckli, NASA GSFC)</p>
+                    <p><strong>Copyright Terms:</strong><br><a href="https://science.nasa.gov/earth/earth-observatory/blue-marble-next-generation/" target="_blank" style="text-decoration:underline">public domain (NASA Earth Observatory)</a></p>
+                </section>
+            </article>
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+
+<footer id="lesson-footer" class="row">
+    <div class="col-md-8">
+
+        <p id="lesson-copyright">&copy; 2026 Glen Buchanan · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="text-decoration:underline">CC BY 4.0</a> (third-party images keep their own terms) · Not endorsed by NSF NCAR · <a href="media_gallery.htm" style="text-decoration:underline">Credits and licences</a> · <a href="https://github.com/glenbuchanan/ncar-ml-readiness-course" target="_blank" style="text-decoration:underline">Source on GitHub</a></p>
+
+    </div>
+    <div class="col-md-4">
+
+        <ul id="parent-links"><li><a href="contributors.htm">Contributors</a></li></ul>
+
+    </div>
+</footer>
+</main>
+
+
+    
+    <div id="quiz-prompt"></div>
+<script src="../scorm/bridge.js"></script>
+</body>
+</html>
