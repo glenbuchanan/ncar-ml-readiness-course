@@ -61,7 +61,7 @@ NSF NCAR, UCAR, COMET or NSF Unidata.
 **How it was checked** (as of 2026-10-30). The checks and records named below are the author's own and are not part of this
 repository:
 
-- **Sources, not memory.** The author's working copies of the two notebooks, handbook and rubric name 42 of the 67 source records in the author's research
+- **Sources, not memory.** The author's working copies of the two notebooks, handbook and rubric name 41 of the 67 source records in the author's research
   library (40 of them through explicit source tags, which are removed from the published files; papers, NSF NCAR data documentation, the NSF Unidata series, NWS outlooks, software documentation); every record carries
   its licence, retrieval date and the exact passages quoted. Every prose paragraph of 40 words or more in the notebooks, handbook and rubric must cite one, or one of the course's own
   design documents, or the check fails (exercise and evidence prompts are exempt and only warn); every quotation of three words or more in the lesson is checked by script against the passage
