@@ -58,23 +58,24 @@ Learner timings and item statistics quoted in the course
 come from simulated learners, not real ones, and are labelled that way. Nothing here is produced, sponsored, reviewed or endorsed by
 NSF NCAR, UCAR, COMET or NSF Unidata.
 
-**How it was checked** (as of 2026-10-29):
+**How it was checked** (as of 2026-10-30). The checks and records named below are the author's own and are not part of this
+repository:
 
-- **Sources, not memory.** The text rests on 40 source records in the author's research library (papers, NSF NCAR data
+- **Sources, not memory.** The text cites 40 of the 67 source records in the author's research library (papers, NSF NCAR data
   documentation, the NSF Unidata series, NWS outlooks, software documentation), each recorded with its licence and retrieval
   date, 34 of them with the exact passages quoted. Every prose paragraph of 40 words or more in the notebooks and handbook must
   cite one, or the check fails; every quotation in the lesson is checked by script, word for word, against its source.
-- **Checks that are proven to fail.** 18 automated checks gate the course (structure, sources and quotations, links, licences
-  and media credits, accessibility, the SCORM package, and full execution of both notebooks), and each is tested by planting
+- **Checks that are proven to fail.** 20 automated checks run in the author's pipeline (structure, sources and quotations, links, licences
+  and media credits, accessibility, the SCORM package, and full execution of both notebooks; one of the 20 checks the application packet), and each is tested by planting
   an error it must catch.
-- **Independent review, reproduced before it is acted on.** Independent AI reviewers read the work as a Project Pythia advocate
-  and as a skeptical Earth system scientist, over five rounds on the Module 2 notebook alone. A finding was acted on only after
+- **Review, reproduced before it is acted on.** Separate AI review sessions (also Claude) read the work as a Project Pythia advocate
+  and as a skeptical Earth system scientist, over six rounds on the Module 2 notebook alone. A finding was acted on only after
   it was reproduced, by re-running the notebook's code or fetching the cited source. They caught real errors, among them an
   overstated result that is now corrected.
 - **The result, tested out of sample.** The standalone [cookbook version of Module 2](https://glenbuchanan.github.io/cesm2-lens-ml-readiness-cookbook/)
   runs the held-out test and then an out-of-period test on the same members' untouched 2016–2100 winters, under a protocol fixed
-  before the scored run (self-attested; the protocol ships with its hash). The small edge seen on the historical test members does
-  not replicate. The course itself still leaves its test to the learner.
+  before the scored run (self-attested; the protocol ships verbatim in the cookbook). The small edge seen on the historical test members is not confirmed:
+  it does not replicate under the rule fixed before the run, and the test was too small to rule an edge of that size out. The course itself still leaves its test to the learner.
 - **Not yet:** a human subject-matter review. Review from people who know CESM2 and ENSO is welcome.
 
 The course follows the shape of NSF Unidata's
