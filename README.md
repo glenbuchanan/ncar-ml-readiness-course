@@ -61,13 +61,13 @@ NSF NCAR, UCAR, COMET or NSF Unidata.
 **How it was checked** (as of 2026-10-30). The checks and records named below are the author's own and are not part of this
 repository:
 
-- **Sources, not memory.** The two notebooks, handbook and rubric name 42 of the 67 source records in the author's research
-  library (40 of them through explicit source tags) (papers, NSF NCAR data documentation, the NSF Unidata series, NWS outlooks, software documentation); every record carries
+- **Sources, not memory.** The author's working copies of the two notebooks, handbook and rubric name 42 of the 67 source records in the author's research
+  library (40 of them through explicit source tags, which are removed from the published files; papers, NSF NCAR data documentation, the NSF Unidata series, NWS outlooks, software documentation); every record carries
   its licence, retrieval date and the exact passages quoted. Every prose paragraph of 40 words or more in the notebooks, handbook and rubric must cite one, or the check fails (exercise and evidence prompts are exempt and only warn); every quotation of three words or more in the lesson is checked by script against the passage
   held in its source record, word for word with case and punctuation ignored.
 - **Checks that are proven to fail.** The author's pipeline has 20 automated checks: 18 run as part of it, and two (the score ledger and the
   result-claim check) are run by hand. They cover structure, sources and quotations, links, licences and media credits,
-  accessibility, the SCORM package, and full execution of both notebooks (one of the 20 checks the application packet), and each
+  accessibility, the SCORM package, and full execution of both notebooks (one of the 20 covers the application packet), and each
   is tested by planting an error it must catch.
 - **Review, reproduced before it is acted on.** Separate AI review sessions (also Claude) judged the Module 2 notebook for science,
   pedagogy and reproducibility (18 rounds in the six dedicated Module 2 review runs; one returned no verdict), and the cookbook in further rounds as a skeptical Earth
