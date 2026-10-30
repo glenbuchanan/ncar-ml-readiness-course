@@ -71,6 +71,10 @@ NSF NCAR, UCAR, COMET or NSF Unidata.
   and as a skeptical Earth system scientist, over five rounds on the Module 2 notebook alone. A finding was acted on only after
   it was reproduced, by re-running the notebook's code or fetching the cited source. They caught real errors, among them an
   overstated result that is now corrected.
+- **The result, tested out of sample.** The standalone [cookbook version of Module 2](https://glenbuchanan.github.io/cesm2-lens-ml-readiness-cookbook/)
+  runs the held-out test and then an out-of-period test on the same members' untouched 2016–2100 winters, under a protocol fixed
+  before the scored run (self-attested; the protocol ships with its hash). The small edge seen on the historical test members does
+  not replicate. The course itself still leaves its test to the learner.
 - **Not yet:** a human subject-matter review. Review from people who know CESM2 and ENSO is welcome.
 
 The course follows the shape of NSF Unidata's
