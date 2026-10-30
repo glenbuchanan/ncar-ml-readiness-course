@@ -53,10 +53,25 @@ with at least 48 GB.
 
 ## How it was made
 
-Drafted with AI assistance (Anthropic's Claude) from cited sources, under the author's direction; the author's line-by-line edit and a subject-matter review are still to come. The drafting ran inside a
-pipeline where independent models judge and try to refute each part and automated checks gate it. Learner timings and item statistics quoted in the course
+Drafted with AI assistance (Anthropic's Claude) from cited sources, under the author's direction, and reviewed by the author in several full read-throughs. Text and code were checked against those sources and the notebooks' own outputs by automated tests and independent AI reviewers; no human subject-matter expert has reviewed it yet.
+Learner timings and item statistics quoted in the course
 come from simulated learners, not real ones, and are labelled that way. Nothing here is produced, sponsored, reviewed or endorsed by
 NSF NCAR, UCAR, COMET or NSF Unidata.
+
+**How it was checked** (as of 2026-10-29):
+
+- **Sources, not memory.** The text rests on 40 source records in the author's research library (papers, NSF NCAR data
+  documentation, the NSF Unidata series, NWS outlooks, software documentation), each recorded with its licence and retrieval
+  date, 34 of them with the exact passages quoted. Every prose paragraph of 40 words or more in the notebooks and handbook must
+  cite one, or the check fails; every quotation in the lesson is checked by script, word for word, against its source.
+- **Checks that are proven to fail.** 18 automated checks gate the course (structure, sources and quotations, links, licences
+  and media credits, accessibility, the SCORM package, and full execution of both notebooks), and each is tested by planting
+  an error it must catch.
+- **Independent review, reproduced before it is acted on.** Independent AI reviewers read the work as a Project Pythia advocate
+  and as a skeptical Earth system scientist, over five rounds on the Module 2 notebook alone. A finding was acted on only after
+  it was reproduced, by re-running the notebook's code or fetching the cited source. They caught real errors, among them an
+  overstated result that is now corrected.
+- **Not yet:** a human subject-matter review. Review from people who know CESM2 and ENSO is welcome.
 
 The course follows the shape of NSF Unidata's
 [*Supervised Machine Learning Readiness*](https://github.com/Unidata/supervised-ml-readiness) (Apache-2.0); short quotations from it are credited where they appear.
