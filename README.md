@@ -53,7 +53,7 @@ with at least 48 GB.
 
 ## How it was made
 
-Drafted with AI assistance (Anthropic's Claude) from cited sources, under the author's direction, and reviewed by the author in several full read-throughs. Text and code were checked against those sources and the notebooks' own outputs by automated tests and independent AI reviewers; no human subject-matter expert has reviewed it yet.
+Drafted with AI assistance (Anthropic's Claude) from cited sources, under the author's direction, and reviewed by the author in several full read-throughs. Text and code were checked against those sources and the notebooks' own outputs by automated tests and by separate AI review sessions (also Claude); no human subject-matter expert has reviewed it yet.
 Learner timings and item statistics quoted in the course
 come from simulated learners, not real ones, and are labelled that way. Nothing here is produced, sponsored, reviewed or endorsed by
 NSF NCAR, UCAR, COMET or NSF Unidata.
