@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this course, please cite it as below."
 type: software
 title: "Machine Learning Readiness for NSF NCAR Staff"
-abstract: "An open-source introduction to machine learning for scientists and engineers new to it, built on the CESM2 Large Ensemble: a no-code lesson (also packaged as SCORM 1.2), two Jupyter notebooks with a handbook and rubric, and a pretest, quiz and boosters aligned to five objectives. Drafted with AI assistance (Anthropic's Claude) from cited sources, under the author's direction, and reviewed by the author in several full read-throughs. Text and code were checked against those sources and the notebooks' own outputs by automated tests and by separate AI review sessions (also Claude); no human subject-matter expert has reviewed it yet."
+abstract: "An open-source introduction to machine learning for scientists and engineers new to it, built on the CESM2 Large Ensemble: a no-code lesson (also packaged as SCORM 1.2), two Jupyter notebooks with a handbook and rubric, and a pretest, quiz and boosters aligned to five objectives. Drafted with AI assistance (Anthropic's Claude) from cited sources, under the author's direction, and reviewed by the author in several full read-throughs. Text and code were checked against those sources and the notebooks' own outputs by the author's automated checks and by separate AI review sessions (also Claude); no human subject-matter expert has reviewed it yet."
 authors:
   - family-names: Buchanan
     given-names: Glen

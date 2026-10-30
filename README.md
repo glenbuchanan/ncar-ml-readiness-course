@@ -53,7 +53,7 @@ with at least 48 GB.
 
 ## How it was made
 
-Drafted with AI assistance (Anthropic's Claude) from cited sources, under the author's direction, and reviewed by the author in several full read-throughs. Text and code were checked against those sources and the notebooks' own outputs by automated tests and by separate AI review sessions (also Claude); no human subject-matter expert has reviewed it yet.
+Drafted with AI assistance (Anthropic's Claude) from cited sources, under the author's direction, and reviewed by the author in several full read-throughs. Text and code were checked against those sources and the notebooks' own outputs by the author's automated checks and by separate AI review sessions (also Claude); no human subject-matter expert has reviewed it yet.
 Learner timings and item statistics quoted in the course
 come from simulated learners, not real ones, and are labelled that way. Nothing here is produced, sponsored, reviewed or endorsed by
 NSF NCAR, UCAR, COMET or NSF Unidata.
@@ -61,15 +61,16 @@ NSF NCAR, UCAR, COMET or NSF Unidata.
 **How it was checked** (as of 2026-10-30). The checks and records named below are the author's own and are not part of this
 repository:
 
-- **Sources, not memory.** The text cites 40 of the 67 source records in the author's research library (papers, NSF NCAR data
-  documentation, the NSF Unidata series, NWS outlooks, software documentation), each recorded with its licence and retrieval
-  date, 34 of them with the exact passages quoted. Every prose paragraph of 40 words or more in the notebooks and handbook must
+- **Sources, not memory.** The two notebooks, handbook and rubric cite 37 of the 67 source records in the author's research
+  library (papers, NSF NCAR data documentation, the NSF Unidata series, NWS outlooks, software documentation); every record carries
+  its licence and retrieval date, and each of the 37 holds the exact passages quoted. Every prose paragraph of 40 words or more in the notebooks and handbook must
   cite one, or the check fails; every quotation in the lesson is checked by script, word for word, against its source.
 - **Checks that are proven to fail.** 20 automated checks run in the author's pipeline (structure, sources and quotations, links, licences
   and media credits, accessibility, the SCORM package, and full execution of both notebooks; one of the 20 checks the application packet), and each is tested by planting
   an error it must catch.
-- **Review, reproduced before it is acted on.** Separate AI review sessions (also Claude) read the work as a Project Pythia advocate
-  and as a skeptical Earth system scientist, over six rounds on the Module 2 notebook alone. A finding was acted on only after
+- **Review, reproduced before it is acted on.** Separate AI review sessions (also Claude) judged the Module 2 notebook for science,
+  pedagogy and reproducibility (18 review rounds over six runs), and the cookbook in further rounds as a skeptical Earth
+  system scientist, a claims auditor and a Project Pythia maintainer. A finding was acted on only after
   it was reproduced, by re-running the notebook's code or fetching the cited source. They caught real errors, among them an
   overstated result that is now corrected.
 - **The result, tested out of sample.** The standalone [cookbook version of Module 2](https://glenbuchanan.github.io/cesm2-lens-ml-readiness-cookbook/)
