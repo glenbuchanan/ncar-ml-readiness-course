@@ -63,15 +63,15 @@ repository:
 
 - **Sources, not memory.** The author's working copies of the two notebooks, handbook and rubric name 41 of the 67 source records in the author's research
   library (40 of them through explicit source tags, which are removed from the published files; papers, NSF NCAR data documentation, the NSF Unidata series, NWS outlooks, software documentation); every record carries
-  its licence, retrieval date and the exact passages quoted. Every prose paragraph of 40 words or more in the notebooks, handbook and rubric must cite one, or one of the course's own
+  its licence and retrieval date, and holds the exact passages the course quotes. Every prose paragraph of 40 words or more in the notebooks, handbook and rubric must cite one, or one of the course's own
   design documents, or the check fails (exercise and evidence prompts are exempt and only warn); every quotation of three words or more in the lesson is checked by script against the passage
   held in its source record, word for word with case and punctuation ignored.
-- **Checks that are proven to fail.** The author's pipeline has 20 automated checks: 18 run as part of it, and two (the score ledger and the
+- **Checks that are proven to fail.** The author's pipeline has 20 automated Python checks: 18 run as part of it, and two (the score ledger and the
   result-claim check) are run by hand. They cover structure, sources and quotations, links, licences and media credits,
   accessibility, the SCORM package, and full execution of both notebooks (one of the 20 covers the application packet), and each
-  is tested by planting an error it must catch.
+  is tested by planting an error it must catch (one, the result-claim check, warns rather than fails).
 - **Review, reproduced before it is acted on.** Separate AI review sessions (also Claude) judged the Module 2 notebook for science,
-  pedagogy and reproducibility (30 review rounds over 14 runs; one returned no verdict), and the cookbook in further rounds as a skeptical Earth
+  pedagogy and reproducibility (at least 30 review rounds over 14 runs, counted from the rendered review summaries; one returned no verdict), and the cookbook in further rounds as a skeptical Earth
   system scientist, a claims auditor and a Project Pythia maintainer. A finding was acted on only after
   it was reproduced, by re-running the notebook's code or fetching the cited source. They caught real errors, among them an
   overstated result that is now corrected.
