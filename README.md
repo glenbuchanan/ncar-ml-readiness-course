@@ -4,7 +4,7 @@ An open-source introduction to machine learning for scientists and engineers who
 Ensemble that NSF NCAR distributes on AWS Open Data.
 
 **[Open the lesson in your browser →](https://glenbuchanan.github.io/ncar-ml-readiness-course/)** &nbsp;·&nbsp;
-[Module 2 as a cookbook on Project Pythia's template, proposed to the gallery](https://glenbuchanan.github.io/cesm2-lens-ml-readiness-cookbook/) &nbsp;·&nbsp;
+[Module 2 as a cookbook on Project Pythia's template, to be proposed to the gallery](https://glenbuchanan.github.io/cesm2-lens-ml-readiness-cookbook/) &nbsp;·&nbsp;
 [SCORM 1.2 package for an LMS](https://github.com/glenbuchanan/ncar-ml-readiness-course/releases/latest)
 
 | | |
